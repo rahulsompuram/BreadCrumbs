@@ -1,4 +1,16 @@
 .editor {
   min-height: 300px;
   padding: 10px;
+  border: solid 1px gray;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin: 10px;
+}
+
+.title {
+  padding-left: 10px;
 }

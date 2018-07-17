@@ -23,21 +23,32 @@ export default class MyEditor extends React.Component {
     this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
   }
 
+  toggleBlockType(e, blockType){
+    e.preventDefault();
+    this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType))
+  }
+
   render() {
     return (
-      <div>
-        <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">B</RaisedButton>
-        <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">I</RaisedButton>
-        <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UNDERLINE')} color="primary">U</RaisedButton>
-        <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'STRIKETHROUGH')} color="primary">S</RaisedButton>
+      <div className="container">
+        <h3 className="title">Document Title</h3>
+      <div className="editor">
+        <div className="toolbar">
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">B</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">I</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UNDERLINE')} color="primary">U</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'STRIKETHROUGH')} color="primary">S</RaisedButton>
 
-        <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')} color="primary">ABC</RaisedButton>
-        <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')} color="primary">abc</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')} color="primary">ABC</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')} color="primary">abc</RaisedButton>
 
-        <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">Font color</RaisedButton>
-        <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">Italic </RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">Font color</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">Italic </RaisedButton>
 
-        <div className="editor">
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">•</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">1.</RaisedButton>
+        </div>
+
           <Editor
             editorState={this.state.editorState}
             customStyleMap={styleMap}
