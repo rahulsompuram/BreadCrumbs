@@ -10,7 +10,7 @@ const styleMap = {
   },
   'LOWERCASE': {
     textTransform: 'lowercase'
-  }
+  },
 }
 
 const presetColors = [
@@ -35,7 +35,7 @@ export default class MyEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorState: EditorState.createEmpty() 
+      editorState: EditorState.createEmpty(),
     };
     this.onChange = editorState => this.setState({ editorState });
     this.getEditorState = () => this.state.editorState;
@@ -67,6 +67,9 @@ export default class MyEditor extends React.Component {
 
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')} color="primary">ABC</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')} color="primary">abc</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ENLARGE')} color="primary">A+</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')} color="primary">A-</RaisedButton>
+
 
           <ColorPicker
             toggleColor={color => this.picker.addColor(color)}
@@ -76,8 +79,8 @@ export default class MyEditor extends React.Component {
 
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">•</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">1.</RaisedButton>
-        </div>
 
+        </div>
           <Editor
             editorState={editorState}
             customStyleMap={styleMap}
