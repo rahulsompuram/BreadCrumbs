@@ -92,6 +92,7 @@ h2 {
   border-radius: 5px;
 }
 
+<<<<<<< HEAD
 .topnav {
   background-color: #cd6133;
   margin: 0;
@@ -106,4 +107,31 @@ h2 {
 #homeButton {
   background-color: #cd6133;
   color: white;
+=======
+.docPortal {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.createDoc {
+  padding: 10px;
+}
+
+.docsList {
+  margin: 5px;
+  padding: 10px;
+  border: solid 1px #cd6133;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoutButton {
+  text-align: right;
+  padding: 10px;
+}
+
+#newDoc {
+  background-color: #cd6133;
+>>>>>>> bb0e6bde420ad7c33639d1d3fa4f15df2db2734f
 }
