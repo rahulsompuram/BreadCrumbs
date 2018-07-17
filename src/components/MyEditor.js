@@ -43,6 +43,7 @@ export default class MyEditor extends React.Component {
     this.state = {
       editorState: EditorState.createEmpty(),
       fontSize: 15,
+      documentTitle: 'Example',
     };
     this.onChange = editorState => this.setState({ editorState });
     this.getEditorState = () => this.state.editorState;
@@ -78,9 +79,16 @@ export default class MyEditor extends React.Component {
 
     return (
       <div className="container">
-        <h3 className="title">Document Title</h3>
-      <div className="editor">
+        <h3 className="title">{this.state.documentTitle}</h3>
         <div className="toolbar">
+          <RaisedButton>
+            <ColorPicker
+              toggleColor={color => this.picker.addColor(color)}
+              presetColors={presetColors}
+              color={this.picker.currentColor(editorState)}
+            />
+          </RaisedButton>
+
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">B</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">I</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UNDERLINE')} color="primary">U</RaisedButton>
@@ -91,14 +99,6 @@ export default class MyEditor extends React.Component {
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ENLARGE')} color="primary">+</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')} color="primary">-</RaisedButton>
 
-
-
-          <ColorPicker
-            toggleColor={color => this.picker.addColor(color)}
-            presetColors={presetColors}
-            color={this.picker.currentColor(editorState)}
-          />
-
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">•</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">1.</RaisedButton>
 
@@ -107,7 +107,10 @@ export default class MyEditor extends React.Component {
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'right')} color="primary">Align Right</RaisedButton>
 
 
+
         </div>
+        <br />
+      <div className="editor">
           <Editor
             editorState={editorState}
             customStyleMap={styleMap}
