@@ -18,9 +18,14 @@ export default class LoginPage extends React.Component {
         </div>
         <div id="credentials">
           <Input focus type="text" placeholder='Username' />
+          <br/>
           <Input focus type="password" placeholder='Password' />
+          <br/>
+          <br/>
           <Button primary>Sign In</Button>
+          <br/>
           <Button id="registerButton">Register</Button>
+          <br/>
         </div>
       </div>
     );
