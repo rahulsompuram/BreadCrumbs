@@ -89,10 +89,10 @@ export default class MyEditor extends React.Component {
 
     return (
       <div className="container">
-        <h2 className="title">{this.state.documentTitle}</h2>
+        <h2> {this.state.documentTitle} </h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label id='update_label'>
-            Update title:
+            Update title: 
             <input type="text" name="name" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)}/>
           </label>
           <input type="submit" value="Change!" />
@@ -130,7 +130,7 @@ export default class MyEditor extends React.Component {
               </Button>
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}} onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')}>
                 <text id='test'>
-                  abc
+                  -
                 </text>
               </Button>
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}} onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')}>

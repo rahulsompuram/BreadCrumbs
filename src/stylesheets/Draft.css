@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Philosopher');
 
 .editor {
   min-height: 700px;
@@ -41,13 +41,13 @@
 
 body {
   background: 'grey';
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Philosopher', sans-serif;
 }
 
 h2 {
   color: #cd6133;
   font-size: 36px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Philosopher', sans-serif;
 }
 
 #update_label {
