@@ -43,7 +43,7 @@ export default class MyEditor extends React.Component {
     this.state = {
       editorState: EditorState.createEmpty(),
       fontSize: 15,
-      documentTitle: 'Example',
+      documentTitle: 'Edit Document',
     };
     this.onChange = editorState => this.setState({ editorState });
     this.getEditorState = () => this.state.editorState;
@@ -78,39 +78,52 @@ export default class MyEditor extends React.Component {
     const { editorState } = this.state;
 
     return (
-      <div className="container">f
-        <h3 className="title">{this.state.documentTitle}</h3>
+      <div className="container">
+        <h2 className="title">{this.state.documentTitle}</h2>
         <div className="toolbar">
-          <RaisedButton>
-            <ColorPicker
-              toggleColor={color => this.picker.addColor(color)}
-              presetColors={presetColors}
-              color={this.picker.currentColor(editorState)}
-            />
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">
+            <i className="material-icons">format_bold</i>
           </RaisedButton>
-
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">B</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">I</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UNDERLINE')} color="primary">U</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'STRIKETHROUGH')} color="primary">S</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">
+            <i className="material-icons">format_italic</i>
+          </RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UNDERLINE')} color="primary">
+            <i className="material-icons">format_underlined</i>
+          </RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'STRIKETHROUGH')} color="primary">
+            <i className="material-icons">strikethrough_s</i>
+          </RaisedButton>
 
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')} color="primary">ABC</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')} color="primary">abc</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ENLARGE')} color="primary">+</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')} color="primary">-</RaisedButton>
 
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">•</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">1.</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">
+            <i className="material-icons">format_list_bulleted</i>
+          </RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">
+            <i className="material-icons">format_list_numbered</i>
+          </RaisedButton>
 
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'left')} color="primary">Align Left</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'center')} color="primary">Align Center</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'right')} color="primary">Align Right</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'left')} color="primary">
+            <i className="material-icons">format_align_left</i>
+          </RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'center')} color="primary">
+            <i className="material-icons">format_align_center</i>
+          </RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'right')} color="primary">
+            <i className="material-icons">format_align_right</i>
+          </RaisedButton>
 
-
+          <ColorPicker
+            toggleColor={color => this.picker.addColor(color)}
+            presetColors={presetColors}
+            color={this.picker.currentColor(editorState)}
+          />
 
         </div>
-        <br />
-      <div className="editor">
+        <div className="editor">
           <Editor
             editorState={editorState}
             customStyleMap={styleMap}
