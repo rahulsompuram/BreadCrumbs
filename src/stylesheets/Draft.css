@@ -35,17 +35,27 @@
 }
 
 body {
-  background: #ECE9E6;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #2c3e50;
+  height: 100%;
 }
 
 #loginTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
   color: #cd6133;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 500px;
+}
+
+#credentials {
+  display: flex;
+  justify-content: center;
+}
+
+#registerButton {
+  background-color: #cd6133;
+  color: white;
 }

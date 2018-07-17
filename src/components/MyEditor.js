@@ -82,49 +82,49 @@ export default class MyEditor extends React.Component {
         <h2 className="title">{this.state.documentTitle}</h2>
         <div className="toolbar">
             <Button.Group>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'BOLD')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')}>
                 <i className="material-icons">format_bold</i>
               </Button>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'ITALIC')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')}>
                 <i className="material-icons">format_italic</i>
               </Button>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'UNDERLINE')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'UNDERLINE')}>
                 <i className="material-icons">format_underlined</i>
               </Button>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'STRIKETHROUGH')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'STRIKETHROUGH')}>
                 <i className="material-icons">strikethrough_s</i>
               </Button>
             </Button.Group>
             <Button.Group>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'UPPERCASE')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')}>
                 ABC
               </Button>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'LOWERCASE')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')}>
                 abc
               </Button>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'ENLARGE')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'ENLARGE')}>
                 +
               </Button>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'SHRINK')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')}>
                 -
               </Button>
             </Button.Group>
             <Button.Group>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleBlockType(e, 'unordered-list-item')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')}>
                 <i className="material-icons">format_list_bulleted</i>
               </Button>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleBlockType(e, 'ordered-list-item')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')}>
                 <i className="material-icons">format_list_numbered</i>
               </Button>
             </Button.Group>
             <Button.Group>
-              <Button icon style={{height: '33px'}}  onClick={e => this.toggleBlockType(e, 'left')}>
+              <Button icon style={{height: '33px'}}  onMouseDown={e => this.toggleBlockType(e, 'left')}>
               <i className="material-icons">format_align_left</i>
               </Button>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleBlockType(e, 'center')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleBlockType(e, 'center')}>
                 <i className="material-icons">format_align_center</i>
               </Button>
-              <Button icon style={{height: '33px'}} onClick={e => this.toggleBlockType(e, 'right')}>
+              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleBlockType(e, 'right')}>
                 <i className="material-icons">format_align_right</i>
               </Button>
             </Button.Group>
