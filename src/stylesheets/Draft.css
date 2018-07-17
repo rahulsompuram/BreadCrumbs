@@ -87,3 +87,30 @@ h2 {
   margin: auto;
   border-radius: 5px;
 }
+
+.docPortal {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.createDoc {
+  padding: 10px;
+}
+
+.docsList {
+  margin: 5px;
+  padding: 10px;
+  border: solid 1px #cd6133;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoutButton {
+  text-align: right;
+  padding: 10px;
+}
+
+#newDoc {
+  background-color: #cd6133;
+}
