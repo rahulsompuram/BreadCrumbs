@@ -11,6 +11,12 @@ const styleMap = {
   'LOWERCASE': {
     textTransform: 'lowercase'
   },
+  'ENLARGE': {
+    fontSize: '40px'
+  },
+  'SHRINK': {
+    fontSize: '10px'
+  }
 }
 
 const presetColors = [
@@ -36,6 +42,7 @@ export default class MyEditor extends React.Component {
     super(props);
     this.state = {
       editorState: EditorState.createEmpty(),
+      fontSize: 15,
     };
     this.onChange = editorState => this.setState({ editorState });
     this.getEditorState = () => this.state.editorState;
@@ -47,10 +54,24 @@ export default class MyEditor extends React.Component {
     this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
   }
 
-  toggleBlockType(e, blockType){
+  toggleBlockType(e, blockType) {
     e.preventDefault();
     this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType))
   }
+
+  getBlockStyle = (block) => {
+    switch (block.getType()) {
+      case 'left':
+      return 'align-left';
+      case 'center':
+      return 'align-center';
+      case 'right':
+      return 'align-right';
+      default:
+      return null;
+    }
+  }
+
 
   render() {
     const { editorState } = this.state;
@@ -67,8 +88,9 @@ export default class MyEditor extends React.Component {
 
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')} color="primary">ABC</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')} color="primary">abc</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ENLARGE')} color="primary">A+</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')} color="primary">A-</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ENLARGE')} color="primary">+</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')} color="primary">-</RaisedButton>
+
 
 
           <ColorPicker
@@ -80,12 +102,18 @@ export default class MyEditor extends React.Component {
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">•</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">1.</RaisedButton>
 
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'left')} color="primary">Align Left</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'center')} color="primary">Align Center</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'right')} color="primary">Align Right</RaisedButton>
+
+
         </div>
           <Editor
             editorState={editorState}
             customStyleMap={styleMap}
             customStyleFn={this.picker.customStyleFn}
             onChange={this.onChange}
+            blockStyleFn={this.getBlockStyle}
           />
         </div>
       </div>);

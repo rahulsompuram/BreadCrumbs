@@ -15,3 +15,13 @@
   padding-left: 10px;
   align-content: center;
 }
+
+.align-right div {
+    text-align: right;
+}
+.align-center div {
+    text-align: center;
+}
+.align-left div {
+    text-align: left;
+}
