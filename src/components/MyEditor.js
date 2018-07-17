@@ -45,12 +45,19 @@ export default class MyEditor extends React.Component {
     this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
   }
 
+  toggleBlockType(e, blockType){
+    e.preventDefault();
+    this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType))
+  }
+
   render() {
     const { editorState } = this.state;
     const inlineStyles = this.picker.exporter(editorState);
 
     return (
-      <div>
+      <div className="container">
+        <h3 className="title">Document Title</h3>
+      <div className="editor">
         <div className="toolbar">
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">B</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">I</RaisedButton>
@@ -60,16 +67,11 @@ export default class MyEditor extends React.Component {
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')} color="primary">ABC</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')} color="primary">abc</RaisedButton>
 
-          <ColorPicker
-            toggleColor={color => this.picker.addColor(color)}
-            presetColors={presetColors}
-            color={this.picker.currentColor(editorState)}
-          />
-          <RaisedButton onMouseDown={this.picker.removeColor} color="primary">x</RaisedButton>
 
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">•</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">1.</RaisedButton>
         </div>
 
-        <div className="editor">
           <Editor
             editorState={this.state.editorState}
             customStyleMap={styleMap}
