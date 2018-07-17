@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Concert+One');
 
 .editor {
-  min-height: 300px;
+  min-height: 500px;
   padding: 10px;
   border: solid 1px gray;
   border-radius: 2px;
@@ -10,8 +10,9 @@
 }
 
 .toolbar {
-  display: inline-block;
-  align
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .container {
