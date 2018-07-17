@@ -12,6 +12,10 @@ var UserSchema = new Schema({
     type: String,
     required: true
   },
+  docList: {
+    type: Array,
+    default: []
+  }
 
 });
 

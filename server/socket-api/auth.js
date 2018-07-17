@@ -1,17 +1,4 @@
-var express = require('express');
-var app = express();
-var Document = require('../model/document');
-var User = require('../model/user');
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-
-//setup for MongoDB
-var mongoose = require('mongoose');
-
+import mongoose from 'mongoose';
 if (! process.env.MONGODB_URI) {
   throw new Error("MONGODB_URI is not in the environmental variables. Try running 'source env.sh'");
 }
@@ -23,3 +10,12 @@ mongoose.connection.on('error', function() {
   process.exit(1);
 });
 mongoose.connect(process.env.MONGODB_URI);
+
+
+
+export default function auth(socket) {
+  socket.on('login', function(data, res) {
+    if(User.findOne({username: data.username, password: data.password}).length) res({ok: true})
+    else res({ok: false})
+  })
+}

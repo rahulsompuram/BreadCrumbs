@@ -6,23 +6,39 @@ var Schema = mongoose.Schema;
 var DocumentSchema = new Schema({
   title: {
     type: String,
-    required: true
+    default: "Untitled"
   },
   owner: {
-    type: String,
-    required: true
+    type: mongoose.Schema.ObjectId,
+    required: true,
+    ref: "users"
   },
-  contributors: {
-    type: Array,
+  collaboratorList: {
+    type: [{
+      type:  mongoose.Schema.ObjectId,
+      ref: 'users'
+    }],
+    default: [],
   },
   password: {
     type: String,
     required: true
   },
-  body: {
-    type: String
+  content: {
+    type: Array,
+    default: []
+  },
+  createdTime: {
+    type: Date
+  },
+  lastEditTime: {
+    type: Date
   }
-});
+},
+  {
+    minimize: false
+  }
+);
 
 
 module.exports = mongoose.model('Document', DocumentSchema);
