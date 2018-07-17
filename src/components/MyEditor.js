@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import RaisedButton from 'material-ui/RaisedButton';
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
@@ -34,7 +34,9 @@ const presetColors = [
 export default class MyEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { editorState: EditorState.createEmpty() };
+    this.state = {
+      editorState: EditorState.createEmpty() 
+    };
     this.onChange = editorState => this.setState({ editorState });
     this.getEditorState = () => this.state.editorState;
     this.picker = colorPickerPlugin(this.onChange, this.getEditorState);
@@ -52,7 +54,6 @@ export default class MyEditor extends React.Component {
 
   render() {
     const { editorState } = this.state;
-    const inlineStyles = this.picker.exporter(editorState);
 
     return (
       <div className="container">
@@ -67,14 +68,20 @@ export default class MyEditor extends React.Component {
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')} color="primary">ABC</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')} color="primary">abc</RaisedButton>
 
+          <ColorPicker
+            toggleColor={color => this.picker.addColor(color)}
+            presetColors={presetColors}
+            color={this.picker.currentColor(editorState)}
+          />
 
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">•</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">1.</RaisedButton>
         </div>
 
           <Editor
-            editorState={this.state.editorState}
+            editorState={editorState}
             customStyleMap={styleMap}
+            customStyleFn={this.picker.customStyleFn}
             onChange={this.onChange}
           />
         </div>
