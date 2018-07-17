@@ -92,14 +92,14 @@ export default class MyEditor extends React.Component {
         <h2> {this.state.documentTitle} </h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label id='update_label'>
-            Update title: 
+            Update title:
             <input type="text" name="name" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)}/>
           </label>
           <input type="submit" value="Change!" />
         </form>
         <br />
         <div className='container' id='container2'>
-        <div className="toolbar">
+          <div className="toolbar">
             <Button.Group>
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}} onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')}>
                 <i className="material-icons" id='test'>format_bold_white</i>
@@ -140,7 +140,7 @@ export default class MyEditor extends React.Component {
                 <i className="material-icons" id='test'>format_list_numbered</i>
               </Button>
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}}  onMouseDown={e => this.toggleBlockType(e, 'left')}>
-              <i className="material-icons" id='test'>format_align_left</i>
+                <i className="material-icons" id='test'>format_align_left</i>
               </Button>
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}} onMouseDown={e => this.toggleBlockType(e, 'center')}>
                 <i className="material-icons" id='test'>format_align_center</i>
@@ -156,67 +156,27 @@ export default class MyEditor extends React.Component {
                 />
               </Button>
             </Button.Group>
+          </div>
+          <br />
+          <div className="editor" style={{backgroundColor: 'white', width: '80%', margin: 'auto', paddingBottom: '10px'}}
+            onKeyDown={(e) => {
+            if (e.key === "Tab") {
+              e.preventDefault()
+              //TODO TAB INDENT FEATURE
 
-          {/* <i className="material-icons" onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')}>format_bold</i>
-
-          <RaisedButton
-             onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">
-            <i className="material-icons">format_bold</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">
-            <i className="material-icons">format_italic</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UNDERLINE')} color="primary">
-            <i className="material-icons">format_underlined</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'STRIKETHROUGH')} color="primary">
-            <i className="material-icons">strikethrough_s</i>
-          </RaisedButton>
-
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')} color="primary">ABC</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')} color="primary">abc</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ENLARGE')} color="primary">+</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')} color="primary">-</RaisedButton>
-
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">
-            <i className="material-icons">format_list_bulleted</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">
-            <i className="material-icons">format_list_numbered</i>
-          </RaisedButton>
-
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'left')} color="primary">
-            <i className="material-icons">format_align_left</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'center')} color="primary">
-            <i className="material-icons">format_align_center</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'right')} color="primary">
-            <i className="material-icons">format_align_right</i>
-          </RaisedButton>
-
-          <RaisedButton>
-            <ColorPicker
-              toggleColor={color => this.picker.addColor(color)}
-              presetColors={presetColors}
-              color={this.picker.currentColor(editorState)}
+            }
+          }}>
+            <Editor
+              editorState={editorState}
+              customStyleMap={styleMap}
+              customStyleFn={this.picker.customStyleFn}
+              onChange={this.onChange}
+              blockStyleFn={this.getBlockStyle}
             />
-          </RaisedButton> */}
-
+          </div>
+          <br />
         </div>
-        <br />
-        <div className="editor" style={{backgroundColor: 'white', width: '80%', margin: 'auto', paddingBottom: '10px'}}>
-          <Editor
-            editorState={editorState}
-            customStyleMap={styleMap}
-            customStyleFn={this.picker.customStyleFn}
-            onChange={this.onChange}
-            blockStyleFn={this.getBlockStyle}
-          />
-        </div>
-        <br />
       </div>
-    </div>
     );
   }
 }

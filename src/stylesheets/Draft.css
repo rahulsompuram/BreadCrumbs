@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Philosopher');
+@import url('https://fonts.googleapis.com/css?family=Concert+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 .editor {
   min-height: 700px;
@@ -34,6 +36,47 @@
     text-align: left;
 }
 
+body {
+  background: #2c3e50;
+  height: 100%;
+}
+
+#loginTitle {
+  font-family: 'Concert One', sans-serif;
+  font-size: 96px;
+  color: #cd6133;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+}
+
+#registrationTitle {
+  font-family: 'Concert One', sans-serif;
+  font-size: 96px;
+  color: #cd6133;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 100px;
+  justify-content: center;
+  height: 300px;
+}
+
+#register_inputs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 25%;
+  margin: auto;
+}
+
+#registerButton {
+  background-color: #cd6133;
+  color: white;
+}
+
 #test {
   color: white;
   width: 25px;
@@ -59,4 +102,31 @@ h2 {
   width: 60%;
   margin: auto;
   border-radius: 5px;
+}
+
+.docPortal {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.createDoc {
+  padding: 10px;
+}
+
+.docsList {
+  margin: 5px;
+  padding: 10px;
+  border: solid 1px #cd6133;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoutButton {
+  text-align: right;
+  padding: 10px;
+}
+
+#newDoc {
+  background-color: #cd6133;
 }

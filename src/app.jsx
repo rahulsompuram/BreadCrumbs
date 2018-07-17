@@ -1,5 +1,6 @@
 import React from 'react';
 import MyEditor from './components/MyEditor'
+import DocumentsPortal from './components/DocumentsPortal'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,7 +15,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{height: '100%'}}>
+        {/* <DocumentsPortal /> */}
         {this.state.currentPage === "MyEditor" ? <MyEditor /> : null}
       </div>);
   }
