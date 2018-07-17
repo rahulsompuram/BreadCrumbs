@@ -8,13 +8,15 @@ const styleMap = {
   },
   'LOWERCASE': {
     textTransform: 'lowercase'
-  }
+  },
 }
 
 export default class MyEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { editorState: EditorState.createEmpty() };
+    this.state = {
+      editorState: EditorState.createEmpty(),
+    };
     this.onChange = editorState => this.setState({ editorState });
   }
 
@@ -41,14 +43,17 @@ export default class MyEditor extends React.Component {
 
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')} color="primary">ABC</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')} color="primary">abc</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ENLARGE')} color="primary">A+</RaisedButton>
+          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')} color="primary">A-</RaisedButton>
+
 
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">Font color</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">Italic </RaisedButton>
 
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">•</RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">1.</RaisedButton>
-        </div>
 
+        </div>
           <Editor
             editorState={this.state.editorState}
             customStyleMap={styleMap}
