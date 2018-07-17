@@ -1,15 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Concert+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 .editor {
-  min-height: 500px;
+  min-height: 700px;
   padding: 10px;
   border: solid 1px gray;
   border-radius: 2px;
-  justify-content: center;
-  align-items: center;
+  background-color: white;
 }
 
 .toolbar {
-  display: inline-block;
-  align
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
@@ -29,4 +33,105 @@
 }
 .align-left div {
     text-align: left;
+}
+
+body {
+  background: #2c3e50;
+  height: 100%;
+}
+
+#loginTitle {
+  font-family: 'Concert One', sans-serif;
+  font-size: 96px;
+  color: #cd6133;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 100px;
+  justify-content: center;
+  height: 300px;
+}
+
+#credentials {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 25%;
+  margin: auto;
+}
+
+#registerButton {
+  background-color: #cd6133;
+  color: white;
+}
+
+#test {
+  color: white;
+  width: 25px;
+}
+
+body {
+  background: 'grey';
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  color: white;
+  font-size: 36px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#update_label {
+  color: #cd6133
+}
+
+#container2 {
+  background-color: lightgray;
+  width: 60%;
+  margin: auto;
+  border-radius: 5px;
+}
+
+<<<<<<< HEAD
+.topnav {
+  background-color: #cd6133;
+  margin: 0;
+}
+
+#documentHeader {
+  display: flex;
+  justify-content: space-between;
+  background-color: #cd6133;
+}
+
+#homeButton {
+  background-color: #cd6133;
+  color: white;
+=======
+.docPortal {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.createDoc {
+  padding: 10px;
+}
+
+.docsList {
+  margin: 5px;
+  padding: 10px;
+  border: solid 1px #cd6133;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoutButton {
+  text-align: right;
+  padding: 10px;
+}
+
+#newDoc {
+  background-color: #cd6133;
+>>>>>>> bb0e6bde420ad7c33639d1d3fa4f15df2db2734f
 }

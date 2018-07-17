@@ -1,14 +1,22 @@
 import React from 'react';
+<<<<<<< HEAD
 import MyEditor from './components/MyEditor'
 import io from 'socket.io-client'
+=======
+import LoginPage from './components/LoginPage'
+>>>>>>> 1639637864ac7daeec8bff615ce0489b4aa3a5e1
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+<<<<<<< HEAD
     this.state = {
       currentPage: 'MyEditor',
       connecting: true,
     };
+=======
+    this.state = { currentPage: 'LoginPage' };
+>>>>>>> 1639637864ac7daeec8bff615ce0489b4aa3a5e1
     this.redirect = this.redirect.bind(this);
   }
 
@@ -29,8 +37,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.currentPage === "MyEditor" ? <MyEditor /> : null}
+      <div style={{height: '100%'}}>
+        {this.state.currentPage === "LoginPage" ? <LoginPage /> : null}
       </div>);
   }
 }
