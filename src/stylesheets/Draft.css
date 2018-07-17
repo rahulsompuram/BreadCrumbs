@@ -8,8 +8,9 @@
 }
 
 .toolbar {
-  display: inline-block;
-  align
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .container {

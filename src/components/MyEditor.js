@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import RaisedButton from 'material-ui/RaisedButton';
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
+import { Button, Icon } from 'semantic-ui-react'
 
 
 const styleMap = {
@@ -73,7 +74,6 @@ export default class MyEditor extends React.Component {
     }
   }
 
-
   render() {
     const { editorState } = this.state;
 
@@ -81,7 +81,67 @@ export default class MyEditor extends React.Component {
       <div className="container">
         <h2 className="title">{this.state.documentTitle}</h2>
         <div className="toolbar">
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">
+            <Button.Group>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'BOLD')}>
+                <i className="material-icons">format_bold</i>
+              </Button>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'ITALIC')}>
+                <i className="material-icons">format_italic</i>
+              </Button>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'UNDERLINE')}>
+                <i className="material-icons">format_underlined</i>
+              </Button>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'STRIKETHROUGH')}>
+                <i className="material-icons">strikethrough_s</i>
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'UPPERCASE')}>
+                ABC
+              </Button>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'LOWERCASE')}>
+                abc
+              </Button>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'ENLARGE')}>
+                +
+              </Button>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleInlineStyle(e, 'SHRINK')}>
+                -
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleBlockType(e, 'unordered-list-item')}>
+                <i className="material-icons">format_list_bulleted</i>
+              </Button>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleBlockType(e, 'ordered-list-item')}>
+                <i className="material-icons">format_list_numbered</i>
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button icon style={{height: '33px'}}  onClick={e => this.toggleBlockType(e, 'left')}>
+              <i className="material-icons">format_align_left</i>
+              </Button>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleBlockType(e, 'center')}>
+                <i className="material-icons">format_align_center</i>
+              </Button>
+              <Button icon style={{height: '33px'}} onClick={e => this.toggleBlockType(e, 'right')}>
+                <i className="material-icons">format_align_right</i>
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button>
+                <ColorPicker
+                  toggleColor={color => this.picker.addColor(color)}
+                  presetColors={presetColors}
+                  color={this.picker.currentColor(editorState)}
+                />
+              </Button>
+            </Button.Group>
+
+          {/* <i className="material-icons" onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')}>format_bold</i>
+
+          <RaisedButton
+             onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">
             <i className="material-icons">format_bold</i>
           </RaisedButton>
           <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">
@@ -116,13 +176,16 @@ export default class MyEditor extends React.Component {
             <i className="material-icons">format_align_right</i>
           </RaisedButton>
 
-          <ColorPicker
-            toggleColor={color => this.picker.addColor(color)}
-            presetColors={presetColors}
-            color={this.picker.currentColor(editorState)}
-          />
+          <RaisedButton>
+            <ColorPicker
+              toggleColor={color => this.picker.addColor(color)}
+              presetColors={presetColors}
+              color={this.picker.currentColor(editorState)}
+            />
+          </RaisedButton> */}
 
         </div>
+        <br />
         <div className="editor">
           <Editor
             editorState={editorState}
