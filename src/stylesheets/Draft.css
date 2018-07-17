@@ -1,16 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 .editor {
-  min-height: 500px;
+  min-height: 700px;
   padding: 10px;
   border: solid 1px gray;
   border-radius: 2px;
-  justify-content: center;
-  align-items: center;
+  background-color: white;
 }
 
 .toolbar {
+  padding-top: 10px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .container {
@@ -30,4 +32,31 @@
 }
 .align-left div {
     text-align: left;
+}
+
+#test {
+  color: white;
+  width: 25px;
+}
+
+body {
+  background: 'grey';
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  color: #cd6133;
+  font-size: 36px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#update_label {
+  color: #cd6133
+}
+
+#container2 {
+  background-color: lightgray;
+  width: 60%;
+  margin: auto;
+  border-radius: 5px;
 }
