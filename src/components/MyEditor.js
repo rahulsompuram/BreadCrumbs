@@ -99,54 +99,8 @@ export default class MyEditor extends React.Component {
         </form>
         <br />
         <div className='container' id='container2'>
-        <div className="toolbar">
+          <div className="toolbar">
             <Button.Group>
-<<<<<<< HEAD
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')}>
-                <i className="material-icons">format_bold</i>
-              </Button>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')}>
-                <i className="material-icons">format_italic</i>
-              </Button>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'UNDERLINE')}>
-                <i className="material-icons">format_underlined</i>
-              </Button>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'STRIKETHROUGH')}>
-                <i className="material-icons">strikethrough_s</i>
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')}>
-                ABC
-              </Button>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')}>
-                abc
-              </Button>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'ENLARGE')}>
-                +
-              </Button>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')}>
-                -
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')}>
-                <i className="material-icons">format_list_bulleted</i>
-              </Button>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')}>
-                <i className="material-icons">format_list_numbered</i>
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button icon style={{height: '33px'}}  onMouseDown={e => this.toggleBlockType(e, 'left')}>
-              <i className="material-icons">format_align_left</i>
-              </Button>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleBlockType(e, 'center')}>
-                <i className="material-icons">format_align_center</i>
-              </Button>
-              <Button icon style={{height: '33px'}} onMouseDown={e => this.toggleBlockType(e, 'right')}>
-                <i className="material-icons">format_align_right</i>
-=======
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}} onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')}>
                 <i className="material-icons" id='test'>format_bold_white</i>
               </Button>
@@ -186,14 +140,13 @@ export default class MyEditor extends React.Component {
                 <i className="material-icons" id='test'>format_list_numbered</i>
               </Button>
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}}  onMouseDown={e => this.toggleBlockType(e, 'left')}>
-              <i className="material-icons" id='test'>format_align_left</i>
+                <i className="material-icons" id='test'>format_align_left</i>
               </Button>
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}} onMouseDown={e => this.toggleBlockType(e, 'center')}>
                 <i className="material-icons" id='test'>format_align_center</i>
               </Button>
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}} onMouseDown={e => this.toggleBlockType(e, 'right')}>
                 <i className="material-icons" id='test'>format_align_right</i>
->>>>>>> bf00adde01a465e4a6b62459319ee6924b890eec
               </Button>
               <Button style={{height: '45px', backgroundColor: '#cd6133'}}>
                 <ColorPicker
@@ -203,67 +156,20 @@ export default class MyEditor extends React.Component {
                 />
               </Button>
             </Button.Group>
-
-          {/* <i className="material-icons" onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')}>format_bold</i>
-
-          <RaisedButton
-             onMouseDown={e => this.toggleInlineStyle(e, 'BOLD')} color="primary">
-            <i className="material-icons">format_bold</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ITALIC')} color="primary">
-            <i className="material-icons">format_italic</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UNDERLINE')} color="primary">
-            <i className="material-icons">format_underlined</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'STRIKETHROUGH')} color="primary">
-            <i className="material-icons">strikethrough_s</i>
-          </RaisedButton>
-
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'UPPERCASE')} color="primary">ABC</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'LOWERCASE')} color="primary">abc</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'ENLARGE')} color="primary">+</RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')} color="primary">-</RaisedButton>
-
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')} color="primary">
-            <i className="material-icons">format_list_bulleted</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'ordered-list-item')} color="primary">
-            <i className="material-icons">format_list_numbered</i>
-          </RaisedButton>
-
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'left')} color="primary">
-            <i className="material-icons">format_align_left</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'center')} color="primary">
-            <i className="material-icons">format_align_center</i>
-          </RaisedButton>
-          <RaisedButton onMouseDown={e => this.toggleBlockType(e, 'right')} color="primary">
-            <i className="material-icons">format_align_right</i>
-          </RaisedButton>
-
-          <RaisedButton>
-            <ColorPicker
-              toggleColor={color => this.picker.addColor(color)}
-              presetColors={presetColors}
-              color={this.picker.currentColor(editorState)}
+          </div>
+          <br />
+          <div className="editor" style={{backgroundColor: 'white', width: '80%', margin: 'auto', paddingBottom: '10px'}}>
+            <Editor
+              editorState={editorState}
+              customStyleMap={styleMap}
+              customStyleFn={this.picker.customStyleFn}
+              onChange={this.onChange}
+              blockStyleFn={this.getBlockStyle}
             />
-          </RaisedButton> */}
-
+          </div>
+          <br />
         </div>
-        <br />
-        <div className="editor" style={{backgroundColor: 'white', width: '80%', margin: 'auto', paddingBottom: '10px'}}>
-          <Editor
-            editorState={editorState}
-            customStyleMap={styleMap}
-            customStyleFn={this.picker.customStyleFn}
-            onChange={this.onChange}
-            blockStyleFn={this.getBlockStyle}
-          />
-        </div>
-        <br />
       </div>
-    </div>
     );
   }
 }
