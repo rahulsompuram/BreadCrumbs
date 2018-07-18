@@ -1,8 +1,34 @@
 import React, { Component } from 'react';
 import { Button, Icon, Header } from 'semantic-ui-react'
 import ModalBasicExample from './NewDocModal.js'
+import Document from '../../model/document.js'
+import User from '../../model/user.js'
 
 export default class DocumentsPortal extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      userDocs: []
+    }
+  }
+
+  componentDidMount() {
+    //Do the mongo call to populate the use
+    //TODO
+    Document.find({owner: this.props.currentUserId})
+      .then(doc => {
+        if (doc) {
+          this.setState({userDocs: doc})
+        } else {
+          console.log("User not found");
+          this.props.redirect('LoginPage');
+        }
+      })
+      .catch(err => {
+        console.log(err)
+        this.props.redirect('LoginPage');
+      })
+  }
 
   render() {
     return(
@@ -47,8 +73,9 @@ export default class DocumentsPortal extends React.Component {
             <br />
             <div className='docsListList'>
               <ul>
-                <li><a href='#'>Document 1</a></li>
-                <li><a href='#'>Document 2</a></li>
+                {this.state.userDocs.map((doc) => {
+                  return <li><a href="#">{doc.title}</a></li>
+                })}
               </ul>
             </div>
           </div>
