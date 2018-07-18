@@ -114,6 +114,14 @@ h2 {
   padding: 10px;
 }
 
+#credentials {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 25%;
+  margin: auto;
+}
+
 .docsList {
   margin: 5px;
   padding: 10px;
@@ -130,6 +138,8 @@ h2 {
 
 #newDoc {
   background-color: #cd6133;
+}
+
 .topnav {
   background-color: #cd6133;
   margin: 0;

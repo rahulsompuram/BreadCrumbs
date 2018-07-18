@@ -1,10 +1,10 @@
 import React from 'react';
-import LoginPage from './components/LoginPage'
+import MyEditor from './components/MyEditor'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentPage: 'LoginPage' };
+    this.state = { currentPage: 'MyEditor' };
     this.redirect = this.redirect.bind(this);
   }
 
@@ -15,7 +15,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div style={{height: '100%'}}>
-        {this.state.currentPage === "LoginPage" ? <LoginPage /> : null}
+        {this.state.currentPage === "MyEditor" ? <MyEditor /> : null}
       </div>);
   }
 }
