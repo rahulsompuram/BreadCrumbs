@@ -41,14 +41,26 @@ export default class DocumentsPortal extends React.Component {
         <div className='container' id='container3'>
           <div className="toolbar2">
             <div className="createDoc">
-              <Button id="newDoc" onMouseDown={(e) => {
+              <Button id="newDoc" animated='fade' onMouseDown={(e) => {
               console.log("Does this work?")
-            }} className="ui primary button">New Document</Button>
+            }} className="ui primary button">
+              <Button.Content visible>New Document</Button.Content>
+              <Button.Content hidden>
+                <Icon name='plus' />
+              </Button.Content>
+              </Button>
             </div>
             <div className="shareableDoc">
-              <Button id="shareableDoc" onMouseDown={(e) => {
+              <Button id="shareableDoc" animated='fade' onMouseDown={(e) => {
               console.log("Does this work?")
-            }} className="ui primary button">Create Shareable Document</Button>
+            }} className="ui primary button">
+                <Button.Content visible>
+                  Create Shareable Document
+                </Button.Content>
+                <Button.Content hidden>
+                  <Icon name='plus' />
+                </Button.Content>
+              </Button>
             </div>
           </div>
           <div className='docsList'>
