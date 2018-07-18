@@ -51,22 +51,13 @@ export default class RegistrationPage extends React.Component {
           Registration
         </div>
         <div id="register_inputs">
-<<<<<<< HEAD
-          <Input focus type="text" placeholder='First Name' /> <br />
-          <Input focus type="text" placeholder='Last Name' /> <br />
-          <Input focus type="text" placeholder='Username' /> <br />
-          <Input focus type="password" placeholder='Password' /> <br />
-          <Input focus type="password" placeholder='Repeat Password' /> <br />
-          <Button primary>Register</Button>
-=======
           <Input focus type="text" value={this.state.fName} onChange={this.onChgNameF} placeholder='First Name' /> <br />
           <Input focus type="text" value={this.state.lName} onChange={this.onChgNameL} placeholder='Last Name' /> <br />
-          <Input focus type="text" value={this.state.username} onChange={this.onChgUsername} placeholder='username' /> <br />
+          <Input focus type="text" value={this.state.username} onChange={this.onChgUsername} placeholder='Username' /> <br />
           <Input focus type="password" value={this.state.password} onChange={this.onChgPass} placeholder='Password' /> <br />
           <Input focus type="password" value={this.state.passwordRepeat} onChange={this.onChgPassRpt} placeholder='Repeat Password' /> <br />
           <Button onClick={this.onRegClick} primary>Register</Button>
           <text style={{color: 'red'}}>{this.state.message}</text>
->>>>>>> 9733070cea79d5a449a2ee87edccfd12fd79420e
         </div>
       </div>
     );
