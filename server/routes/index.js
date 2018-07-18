@@ -32,7 +32,9 @@ router.get('/ping', (req, res) => {
 router.post('/register', (req, res) => {
   let newUser = new User({
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    fName: req.body.fName,
+    lName: req.body.lName
   })
   newUser.save()
   .then(result => res.send({success: true, user: result}))

@@ -25,25 +25,10 @@ export default class LoginPage extends React.Component {
 
   clickLogin = () => {
     this.socket.emit('login', {username: this.state.username, password: this.state.password}, (res) => {
-      res === "MyEditor" ? this.props.redirect(res) : this.setState({message: "Invalid username and password pair!"})
+      res === "DocumentsPortal" ? this.props.redirect(res) : this.setState({message: "Invalid username and password pair!"})
     })
   }
 
-  onRegClick = () => {
-    fetch('http://localhost:1337/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          username: this.state.username,
-          password: this.state.password
-        })
-    })
-    .then(res => res.json())
-    .then(res => console.log(res))
-    .catch(err => console.log('FETCH ERROR', err))
-  }
 
   onChangeUser = (e) => {
     this.setState({
@@ -71,10 +56,10 @@ export default class LoginPage extends React.Component {
           <br/>
           <Button onClick={this.clickLogin} primary>Sign In</Button>
           <br/>
-          <Button onClick={this.onRegClick} id="registerButton">Register</Button>
+          <Button onClick={() => this.props.redirect('RegistrationPage')} id="registerButton">Register</Button>
           <br/>
+          <text style={{color: 'red'}}>{this.state.message}</text>
         </div>
-        <text style={{color: 'red'}}>{this.state.message}</text>
       </div>
     );
   }
