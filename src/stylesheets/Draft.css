@@ -41,6 +41,14 @@ body {
   height: 100%;
 }
 
+#credentials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 25%;
+}
+
 #loginTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
@@ -130,6 +138,8 @@ h2 {
 
 #newDoc {
   background-color: #cd6133;
+}
+
 .topnav {
   background-color: #cd6133;
   margin: 0;
