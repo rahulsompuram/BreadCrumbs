@@ -45,7 +45,7 @@ export default class LoginPage extends React.Component {
           BreadCrumbs
         </div>
         <div id="credentials">
-          <Input focus type="text" onChange={this.onChangeUser} value={this.state.username} placeholder='Username'  onKeyDown={(e) => e.key === "Enter" ? this.clickLogin() : null}/>
+          <Input focus type="text" onChange={this.onChangeUser} value={this.state.username} placeholder='Username' />
           <br/>
           <Input focus type="password" onChange={this.onChangePass} value={this.state.password} placeholder='Password' onKeyDown={(e) => e.key === "Enter" ? this.clickLogin() : null}
           />

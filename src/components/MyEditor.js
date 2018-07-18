@@ -88,11 +88,12 @@ export default class MyEditor extends React.Component {
     const { editorState } = this.state;
 
     return (
-      <div className="container">
+      <div className="container" id='editor_page'>
         <div className='container' id="documentHeader">
-          <div className="topnav">
+          <div className="topnav" id='docTitleBox'>
             <h2 id='docTitle'>{this.state.documentTitle}</h2>
           </div>
+          <div id='docTitleButtons'>
             <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
              <Button.Content hidden>Home</Button.Content>
              <Button.Content visible>
@@ -105,19 +106,22 @@ export default class MyEditor extends React.Component {
               <Icon name='sign out alternate icon' />
             </Button.Content>
           </Button>
+          </div>
         </div>
-        <div className='container' style={{paddingLeft: '5px'}}>
+        <div className='container' id='shareableIDBox'>
           <h3>
             Shareable ID: {this.state.shareableID}
           </h3>
         </div>
-        <form onSubmit={this.handleSubmit.bind(this)} style={{paddingLeft: '10px'}}>
-          <label id='update_label'>
-            Update title:
-            <input type="text" name="name" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)}/>
-          </label>
-          <input type="submit" value="Change!" />
-        </form>
+        <div className='container' id='updateTitleBox'>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <label id='update_label'>
+              Update title:
+              <input type="text" name="name" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)}/>
+            </label>
+            <input type="submit" value="Change!" />
+          </form>
+        </div>
 
         <br />
         <div className='container' id='container2'>
@@ -187,6 +191,7 @@ export default class MyEditor extends React.Component {
             onKeyDown={(e) => {
               if (e.key === "Tab") {
                 e.preventDefault()
+                console.log('Tab pressed')
                 //TODO TAB INDENT FEATURE
               }
             }}>
