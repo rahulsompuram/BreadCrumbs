@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
-import RaisedButton from 'material-ui/RaisedButton';
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
 import { Button, Icon, Input } from 'semantic-ui-react'
 

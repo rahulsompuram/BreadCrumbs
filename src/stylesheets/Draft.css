@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Philosopher');
 @import url('https://fonts.googleapis.com/css?family=Concert+One');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
 .editor {
   min-height: 700px;
   padding: 10px;
@@ -9,23 +8,19 @@
   border-radius: 2px;
   background-color: white;
 }
-
 .toolbar {
   padding-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .container {
   margin: 10px;
 }
-
 .title {
   padding-left: 10px;
   align-content: center;
 }
-
 .align-right div {
     text-align: right;
 }
@@ -35,12 +30,10 @@
 .align-left div {
     text-align: left;
 }
-
 body {
   background: #2c3e50;
   height: 100%;
 }
-
 #loginTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
@@ -52,7 +45,6 @@ body {
   justify-content: center;
   height: 300px;
 }
-
 #registrationTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
@@ -64,7 +56,6 @@ body {
   justify-content: center;
   height: 300px;
 }
-
 #register_inputs {
   display: flex;
   justify-content: center;
@@ -72,48 +63,46 @@ body {
   width: 25%;
   margin: auto;
 }
-
 #registerButton {
   background-color: #cd6133;
   color: white;
 }
-
 #test {
   color: white;
   width: 25px;
 }
-
 body {
   background: 'grey';
   font-family: 'Philosopher', sans-serif;
 }
-
 h2 {
   color: white;
   font-size: 36px;
   font-family: 'Philosopher', sans-serif;
 }
-
 #update_label {
   color: #cd6133
 }
-
 #container2 {
   background-color: lightgray;
   width: 60%;
   margin: auto;
   border-radius: 5px;
 }
-
 .docPortal {
   text-align: center;
   padding-top: 10px;
 }
-
 .createDoc {
   padding: 10px;
 }
-
+#credentials {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 25%;
+  margin: auto;
+}
 .docsList {
   margin: 5px;
   padding: 10px;
@@ -122,26 +111,34 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-
 .logoutButton {
   text-align: right;
   padding: 10px;
 }
-
 #newDoc {
   background-color: #cd6133;
+}
 .topnav {
   background-color: #cd6133;
   margin: 0;
 }
-
 #documentHeader {
   display: flex;
   justify-content: space-between;
   background-color: #cd6133;
 }
-
+#docPortalHeader {
+  display: flex;
+  justify-content: space-between;
+  background-color: #cd6133;
+}
 #homeButton {
   background-color: #cd6133;
   color: white;
+}
+#docTitle {
+  padding-left: 10px;
+}
+#docPortalTitle {
+  padding-left: 10px;
 }
