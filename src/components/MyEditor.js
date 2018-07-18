@@ -89,6 +89,9 @@ export default class MyEditor extends React.Component {
 
     return (
       <div className="container">
+<<<<<<< HEAD
+        <h2> {this.state.documentTitle} </h2>
+=======
         <div className='container' id="documentHeader">
           <div className="topnav">
             <h2>{this.state.documentTitle}</h2>
@@ -106,6 +109,7 @@ export default class MyEditor extends React.Component {
           </Button.Content>
         </Button>
         </div>
+>>>>>>> 1639637864ac7daeec8bff615ce0489b4aa3a5e1
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label id='update_label'>
             Update title:

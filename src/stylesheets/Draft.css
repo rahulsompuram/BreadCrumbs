@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Philosopher');
 @import url('https://fonts.googleapis.com/css?family=Concert+One');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
@@ -52,7 +53,19 @@ body {
   height: 300px;
 }
 
-#credentials {
+#registrationTitle {
+  font-family: 'Concert One', sans-serif;
+  font-size: 96px;
+  color: #cd6133;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 100px;
+  justify-content: center;
+  height: 300px;
+}
+
+#register_inputs {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -72,13 +85,13 @@ body {
 
 body {
   background: 'grey';
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Philosopher', sans-serif;
 }
 
 h2 {
   color: white;
   font-size: 36px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Philosopher', sans-serif;
 }
 
 #update_label {
@@ -92,22 +105,6 @@ h2 {
   border-radius: 5px;
 }
 
-<<<<<<< HEAD
-.topnav {
-  background-color: #cd6133;
-  margin: 0;
-}
-
-#documentHeader {
-  display: flex;
-  justify-content: space-between;
-  background-color: #cd6133;
-}
-
-#homeButton {
-  background-color: #cd6133;
-  color: white;
-=======
 .docPortal {
   text-align: center;
   padding-top: 10px;
@@ -133,5 +130,18 @@ h2 {
 
 #newDoc {
   background-color: #cd6133;
->>>>>>> bb0e6bde420ad7c33639d1d3fa4f15df2db2734f
+.topnav {
+  background-color: #cd6133;
+  margin: 0;
+}
+
+#documentHeader {
+  display: flex;
+  justify-content: space-between;
+  background-color: #cd6133;
+}
+
+#homeButton {
+  background-color: #cd6133;
+  color: white;
 }
