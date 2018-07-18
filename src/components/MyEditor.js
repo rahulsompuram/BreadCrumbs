@@ -187,6 +187,7 @@ export default class MyEditor extends React.Component {
             onKeyDown={(e) => {
               if (e.key === "Tab") {
                 e.preventDefault()
+                console.log('Tab pressed')
                 //TODO TAB INDENT FEATURE
               }
             }}>
