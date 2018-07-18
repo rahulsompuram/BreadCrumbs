@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input } from 'semantic-ui-react'
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 
 import User from '../../model/user';
 
@@ -57,19 +57,29 @@ export default class RegistrationPage extends React.Component {
   render() {
     return (
       <div>
+        <div className='container' id="loginHeader">
+          <div className="topnav2">
+            <Button id="loginRedirectButton" animated='vertical' onClick={() => this.props.redirect('LoginPage')}>
+             <Button.Content visible>Back to Login</Button.Content>
+             <Button.Content hidden>
+               <Icon size='large' name='arrow alternate circle left' />
+             </Button.Content>
+           </Button>
+          </div>
+        </div>
         <div id="registrationTitle">
           Registration
         </div>
         <div id="register_inputs">
-          <Input focus type="text" value={this.state.fName} onChange={this.onChgNameF} placeholder='First Name' /> <br />
-          <Input focus type="text" value={this.state.lName} onChange={this.onChgNameL} placeholder='Last Name' /> <br />
-          <Input focus type="text" value={this.state.username} onChange={this.onChgUsername} placeholder='username' /> <br />
-          <Input focus type="password" value={this.state.password} onChange={this.onChgPass} placeholder='Password' /> <br />
-          <Input focus type="password" value={this.state.passwordRepeat} onChange={this.onChgPassRpt} placeholder='Repeat Password' /> <br />
+          <Input focus type="text" value={this.state.fName} onChange={this.onChgNameF} placeholder='First Name' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
+          <Input focus type="text" value={this.state.lName} onChange={this.onChgNameL} placeholder='Last Name' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
+          <Input focus type="text" value={this.state.username} onChange={this.onChgUsername} placeholder='Username' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
+          <Input focus type="password" value={this.state.password} onChange={this.onChgPass} placeholder='Password' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
+          <Input focus type="password" value={this.state.passwordRepeat} onChange={this.onChgPassRpt} placeholder='Repeat Password' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
           <Button onClick={this.onRegClick} primary>Register</Button>
           <text style={{color: 'red'}}>{this.state.message}</text>
         </div>
-      </div>
+    </div>
     );
   }
 }

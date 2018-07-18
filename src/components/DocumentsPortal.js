@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Icon, Header } from 'semantic-ui-react'
-import ModalBasicExample from './NewDocModal.js'
 import Document from '../../model/document.js'
 import User from '../../model/user.js'
+import NewDocModal from './NewDocModal.js'
+import AddSharedDocModal from './AddSharedDocModal.js'
 
 export default class DocumentsPortal extends React.Component {
   constructor() {
@@ -50,19 +51,10 @@ export default class DocumentsPortal extends React.Component {
         <div className='container' id='container3'>
           <div className="toolbar2">
             <div className="createDoc">
-              <ModalBasicExample/>
+              <NewDocModal redirect={this.props.redirect}/>
             </div>
             <div className="shareableDoc">
-              <Button id="shareableDoc" animated='fade' onMouseDown={(e) => {
-              console.log("Does this work?")
-            }} className="ui primary button">
-                <Button.Content visible>
-                  Create Shareable Document
-                </Button.Content>
-                <Button.Content hidden>
-                  <Icon name='plus' />
-                </Button.Content>
-              </Button>
+              <AddSharedDocModal />
             </div>
           </div>
 

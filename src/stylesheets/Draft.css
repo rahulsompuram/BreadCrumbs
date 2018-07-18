@@ -141,6 +141,11 @@ h2 {
   margin-bottom: 10px;
 }
 
+.modalSharedIdInput {
+  margin: 10px;
+  width: 200px;
+}
+
 .createButton {
   text-align: center;
 }
@@ -156,6 +161,15 @@ h2 {
   background-color: #cd6133;
   margin: 0;
 }
+
+.topnav2 {
+  background-color: white;
+  margin: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
 #documentHeader {
   display: flex;
   justify-content: space-between;
@@ -171,6 +185,11 @@ h2 {
 #homeButton {
   background-color: #cd6133;
   color: white;
+}
+
+#loginRedirectButton {
+  color: #cd6133;
+  background-color: white;
 }
 
 #docTitle {
@@ -206,4 +225,14 @@ h2 {
 .docsListList {
   width: 80%;
   margin: auto;
+}
+
+#documentIdName {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #cd6133;
+}
+
+h3 {
+  color: #cd6133;
 }
