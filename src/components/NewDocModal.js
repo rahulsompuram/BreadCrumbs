@@ -26,7 +26,7 @@ const ModalBasicExample = () => {
           <i className="users icon"></i>
         </div>
         <br/>
-        <Button className="ui grey button">Create</Button>
+        <Button className="ui blue button">Create</Button>
       </div>
 
     </Modal.Actions>

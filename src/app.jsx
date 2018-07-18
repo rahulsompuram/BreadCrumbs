@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 'MyEditor',
+      currentPage: 'DocumentsPortal',
     };
     this.redirect = this.redirect.bind(this);
   }
