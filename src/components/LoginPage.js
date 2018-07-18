@@ -40,9 +40,10 @@ export default class LoginPage extends React.Component {
           BreadCrumbs
         </div>
         <div id="credentials">
-          <Input focus type="text" onChange={this.onChangeUser} value={this.state.username} placeholder='Username' />
+          <Input focus type="text" onChange={this.onChangeUser} value={this.state.username} placeholder='Username'  onKeyDown={(e) => e.key === "Enter" ? this.clickLogin() : null}/>
           <br/>
-          <Input focus type="password" onChange={this.onChangePass} value={this.state.password} placeholder='Password' />
+          <Input focus type="password" onChange={this.onChangePass} value={this.state.password} placeholder='Password' onKeyDown={(e) => e.key === "Enter" ? this.clickLogin() : null}
+          />
           <br/>
           <br/>
           <Button onClick={this.clickLogin} primary>Sign In</Button>
