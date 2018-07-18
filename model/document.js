@@ -11,12 +11,12 @@ var DocumentSchema = new Schema({
   owner: {
     type: mongoose.Schema.ObjectId,
     required: true,
-    ref: "users"
+    ref: "User"
   },
   collaboratorList: {
     type: [{
       type:  mongoose.Schema.ObjectId,
-      ref: 'users'
+      ref: 'User'
     }],
     default: [],
   },
