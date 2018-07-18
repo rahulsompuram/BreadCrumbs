@@ -191,12 +191,14 @@ h2 {
   display: flex;
   align-items: center;
   background-color: #cd6133;
+  margin: -10px;
 }
 
 #docPortalHeader {
   display: flex;
   justify-content: space-between;
   background-color: #cd6133;
+  margin: -10px;
 }
 
 #homeButton {
@@ -237,6 +239,16 @@ h2 {
   display: flex;
   justify-content: center;
   border-bottom: 1px solid black;
+}
+
+#shareableIDBox {
+  margin-left: -10px;
+  padding-left: 10px;
+}
+
+#updateTitleBox {
+  margin-left: -10px;
+  padding-left: 10px;
 }
 
 .docsListList {

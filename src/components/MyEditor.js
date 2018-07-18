@@ -108,18 +108,20 @@ export default class MyEditor extends React.Component {
           </Button>
           </div>
         </div>
-        <div className='container' style={{paddingLeft: '5px'}}>
+        <div className='container' id='shareableIDBox'>
           <h3>
             Shareable ID: {this.state.shareableID}
           </h3>
         </div>
-        <form onSubmit={this.handleSubmit.bind(this)} style={{paddingLeft: '10px'}}>
-          <label id='update_label'>
-            Update title:
-            <input type="text" name="name" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)}/>
-          </label>
-          <input type="submit" value="Change!" />
-        </form>
+        <div className='container' id='updateTitleBox'>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <label id='update_label'>
+              Update title:
+              <input type="text" name="name" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)}/>
+            </label>
+            <input type="submit" value="Change!" />
+          </form>
+        </div>
 
         <br />
         <div className='container' id='container2'>
