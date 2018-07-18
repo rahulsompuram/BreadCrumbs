@@ -108,10 +108,9 @@ h2 {
 .docsList {
   justify-content: center;
   align-items: center;
-  min-height: 700px;
   padding: 10px;
-  border: solid 1px gray;
-  border-radius: 2px;
+  border: solid 2px #cd6133;
+  border-radius: 5px;
   background-color: white;
   width: 80%;
   margin: auto;
@@ -122,6 +121,9 @@ h2 {
 }
 #newDoc {
   background-color: #cd6133;
+  width: 240px;
+  height: 60px;
+  font-size: 20px;
   color: white;
 }
 
@@ -145,6 +147,9 @@ h2 {
 
 #shareableDoc {
   background-color: #cd6133;
+  width: 240px;
+  height: 60px;
+  font-size: 20px;
 }
 
 .topnav {
@@ -177,7 +182,6 @@ h2 {
 }
 
 #container3 {
-  background-color: lightgray;
   width: 60%;
   margin: auto;
   border-radius: 5px;
@@ -196,9 +200,6 @@ h2 {
 .docsListHeader {
   display: flex;
   justify-content: center;
-}
-
-#docsListH3 {
   border-bottom: 1px solid black;
 }
 

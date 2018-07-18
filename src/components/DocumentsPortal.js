@@ -27,9 +27,16 @@ export default class DocumentsPortal extends React.Component {
               <ModalBasicExample/>
             </div>
             <div className="shareableDoc">
-              <Button id="shareableDoc" onMouseDown={(e) => {
+              <Button id="shareableDoc" animated='fade' onMouseDown={(e) => {
               console.log("Does this work?")
-            }} className="ui primary button">Create Shareable Document</Button>
+            }} className="ui primary button">
+                <Button.Content visible>
+                  Create Shareable Document
+                </Button.Content>
+                <Button.Content hidden>
+                  <Icon name='plus' />
+                </Button.Content>
+              </Button>
             </div>
           </div>
 
@@ -39,10 +46,10 @@ export default class DocumentsPortal extends React.Component {
             </div>
             <br />
             <div className='docsListList'>
-              <u1>
+              <ul>
                 <li><a href='#'>Document 1</a></li>
                 <li><a href='#'>Document 2</a></li>
-              </u1>
+              </ul>
             </div>
           </div>
         </div>

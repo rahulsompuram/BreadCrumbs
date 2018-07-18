@@ -3,7 +3,14 @@ import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
 const ModalBasicExample = () => {
   return (
-  <Modal trigger={<Button id="newDoc">New Document</Button>} basic size='small' closeIcon>
+  <Modal trigger={
+    <Button id="newDoc" animated='fade' className="ui primary button">
+    <Button.Content visible>New Document</Button.Content>
+    <Button.Content hidden>
+      <Icon name='plus' />
+    </Button.Content>
+    </Button>
+  } basic size='small' closeIcon>
     <Header icon='file alternate icon' content='Create a new document...'/>
     <Modal.Content>
 

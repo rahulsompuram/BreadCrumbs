@@ -171,6 +171,9 @@ export default class MyEditor extends React.Component {
                   color={this.picker.currentColor(editorState)}
                 />
               </Button>
+              <Button icon style={{height: '45px', backgroundColor: '#cd6133'}}>
+                <i className="material-icons" id='test'>save</i>
+              </Button>
             </Button.Group>
           </div>
           <br />
