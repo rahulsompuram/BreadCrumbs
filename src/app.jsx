@@ -26,7 +26,6 @@ export default class App extends React.Component {
         {this.state.currentPage === "MyEditor" ? <MyEditor redirect={this.redirect} /> : null}
         {this.state.currentPage === "DocumentsPortal" ? <DocumentsPortal redirect={this.redirect} /> : null}
         {this.state.currentPage === "RegistrationPage" ? <RegistrationPage redirect={this.redirect} /> : null}
-
       </div>);
   }
 }

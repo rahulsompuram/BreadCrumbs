@@ -2,8 +2,6 @@ import React from 'react';
 import { Input } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
 import io from 'socket.io-client'
-
-
 export default class LoginPage extends React.Component {
   constructor(props) {
     super(props);
@@ -15,33 +13,26 @@ export default class LoginPage extends React.Component {
     };
     this.socket = ""
   }
-
-
   componentDidMount() {
     this.socket = io('http://localhost:1337')
     this.socket.on('connect', () => this.setState({connecting: null}))
     this.socket.on('disconnect', () => this.setState({connecting: true}))
   }
-
   clickLogin = () => {
     this.socket.emit('login', {username: this.state.username, password: this.state.password}, (res) => {
       res === "DocumentsPortal" ? this.props.redirect(res) : this.setState({message: "Invalid username and password pair!"})
     })
   }
-
-
   onChangeUser = (e) => {
     this.setState({
       username: e.target.value
     })
   }
-
   onChangePass = (e) => {
     this.setState({
       password: e.target.value
     })
   }
-
   render() {
     return (
       <div>
