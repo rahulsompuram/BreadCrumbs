@@ -16,8 +16,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div style={{height: '100%'}}>
-        {/* <DocumentsPortal /> */}
-        {this.state.currentPage === "MyEditor" ? <MyEditor /> : null}
+        <DocumentsPortal />
+        {/* {this.state.currentPage === "MyEditor" ? <MyEditor /> : null} */}
       </div>);
   }
 }

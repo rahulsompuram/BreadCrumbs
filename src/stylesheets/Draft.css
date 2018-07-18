@@ -113,4 +113,23 @@ h2 {
 
 #newDoc {
   background-color: #cd6133;
+  color: white;
+}
+
+.modalContainer {
+  text-align: center
+}
+
+.modalTitleInput {
+  margin: 10px;
+  width: 200px;
+}
+
+.modalCollabInput {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.createButton {
+  text-align: center;
 }
