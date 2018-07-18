@@ -2,7 +2,7 @@ import React, { Component, Scrollable } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import RaisedButton from 'material-ui/RaisedButton';
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon, Input } from 'semantic-ui-react'
 
 
 const styleMap = {
@@ -89,7 +89,23 @@ export default class MyEditor extends React.Component {
 
     return (
       <div className="container">
-        <h2 className="title">{this.state.documentTitle}</h2>
+        <div className='container' id="documentHeader">
+          <div className="topnav">
+            <h2>{this.state.documentTitle}</h2>
+          </div>
+          <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
+           <Button.Content hidden>Home</Button.Content>
+           <Button.Content visible>
+             <Icon name='home' />
+           </Button.Content>
+         </Button>
+         <Button id="homeButton" animated='vertical'>
+          <Button.Content hidden>Logout</Button.Content>
+          <Button.Content visible>
+            <Icon name='sign out alternate icon' />
+          </Button.Content>
+        </Button>
+        </div>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label id='update_label'>
             Update title:
@@ -97,6 +113,7 @@ export default class MyEditor extends React.Component {
           </label>
           <input type="submit" value="Change!" />
         </form>
+
         <br />
         <div className='container' id='container2'>
           <div className="toolbar">
@@ -130,7 +147,7 @@ export default class MyEditor extends React.Component {
               </Button>
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}} onMouseDown={e => this.toggleInlineStyle(e, 'SHRINK')}>
                 <text id='test'>
-                  abc
+                  -
                 </text>
               </Button>
               <Button icon style={{height: '45px', backgroundColor: '#cd6133'}} onMouseDown={e => this.toggleBlockType(e, 'unordered-list-item')}>

@@ -1,8 +1,20 @@
 import http from 'http';
+import express from 'express';
+import socketIO from 'socket.io';
+import {auth} from './socket-api';
+import routes from './routes';
+import Document from '../model/document';
+import User from '../model/user';
 
-http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello World\n');
-}).listen(1337, '127.0.0.1');
+const app = express()
+const server = http.Server(app)
+const io = socketIO(server)
 
-console.log('Server running at http://127.0.0.1:1337/');
+io.on('connection', function (socket) {
+  auth(socket)
+})
+
+app.use(routes)
+
+server.listen(process.env.PORT || 1337)
+console.log('Listening on PORT 1337')
