@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Scrollable } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
-import RaisedButton from 'material-ui/RaisedButton';
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
 import { Button, Icon, Input } from 'semantic-ui-react'
 
@@ -91,7 +90,7 @@ export default class MyEditor extends React.Component {
       <div className="container">
         <div className='container' id="documentHeader">
           <div className="topnav">
-            <h2>{this.state.documentTitle}</h2>
+            <h2 id='docTitle'>{this.state.documentTitle}</h2>
           </div>
           <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
            <Button.Content hidden>Home</Button.Content>
@@ -175,14 +174,14 @@ export default class MyEditor extends React.Component {
             </Button.Group>
           </div>
           <br />
-          <div className="editor" style={{backgroundColor: 'white', width: '80%', margin: 'auto', paddingBottom: '10px'}}
+          <div className="editor" style={{backgroundColor: 'white', width: '80%', margin: 'auto', paddingBottom: '10px', overflow: 'scroll'}}
             onKeyDown={(e) => {
-            if (e.key === "Tab") {
-              e.preventDefault()
-              // TODO TAB INDENT FEATURE
+              if (e.key === "Tab") {
+                e.preventDefault()
+                //TODO TAB INDENT FEATURE
+              }
+            }}>
 
-            }
-          }}>
             <Editor
               editorState={editorState}
               customStyleMap={styleMap}

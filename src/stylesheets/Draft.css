@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Philosopher');
 @import url('https://fonts.googleapis.com/css?family=Concert+One');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
 .editor {
   min-height: 700px;
   padding: 10px;
@@ -9,23 +8,19 @@
   border-radius: 2px;
   background-color: white;
 }
-
 .toolbar {
   padding-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .container {
   margin: 10px;
 }
-
 .title {
   padding-left: 10px;
   align-content: center;
 }
-
 .align-right div {
     text-align: right;
 }
@@ -35,11 +30,11 @@
 .align-left div {
     text-align: left;
 }
-
 body {
   background: #2c3e50;
   height: 100%;
 }
+<<<<<<< HEAD
 
 #credentials {
   display: flex;
@@ -49,6 +44,8 @@ body {
   width: 25%;
 }
 
+=======
+>>>>>>> 958186c30d0669759edbb884a66c89145a2ed1e8
 #loginTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
@@ -60,7 +57,6 @@ body {
   justify-content: center;
   height: 300px;
 }
-
 #registrationTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
@@ -72,7 +68,6 @@ body {
   justify-content: center;
   height: 300px;
 }
-
 #register_inputs {
   display: flex;
   justify-content: center;
@@ -80,72 +75,109 @@ body {
   width: 25%;
   margin: auto;
 }
-
 #registerButton {
   background-color: #cd6133;
   color: white;
 }
-
 #test {
   color: white;
   width: 25px;
 }
-
 body {
   background: 'grey';
   font-family: 'Philosopher', sans-serif;
 }
-
 h2 {
   color: white;
   font-size: 36px;
   font-family: 'Philosopher', sans-serif;
 }
-
 #update_label {
   color: #cd6133
 }
-
 #container2 {
   background-color: lightgray;
   width: 60%;
   margin: auto;
   border-radius: 5px;
 }
-
 .docPortal {
   text-align: center;
   padding-top: 10px;
 }
-
 .createDoc {
   padding: 10px;
 }
 
-.docsList {
-  margin: 5px;
-  padding: 10px;
-  border: solid 1px #cd6133;
-  border-radius: 2px;
+#credentials {
+  display: flex;
   justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  width: 25%;
+  margin: auto;
 }
 
+.docsList {
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: solid 2px #cd6133;
+  border-radius: 5px;
+  background-color: white;
+  width: 80%;
+  margin: auto;
+}
 .logoutButton {
   text-align: right;
   padding: 10px;
 }
-
 #newDoc {
   background-color: #cd6133;
+<<<<<<< HEAD
+=======
+  width: 240px;
+  height: 60px;
+  font-size: 20px;
+  color: white;
+}
+
+.modalContainer {
+  text-align: center
+}
+
+.modalTitleInput {
+  margin: 10px;
+  width: 200px;
+}
+
+.modalCollabInput {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.createButton {
+  text-align: center;
+}
+
+#shareableDoc {
+  background-color: #cd6133;
+  width: 240px;
+  height: 60px;
+  font-size: 20px;
+>>>>>>> 958186c30d0669759edbb884a66c89145a2ed1e8
 }
 
 .topnav {
   background-color: #cd6133;
   margin: 0;
 }
-
 #documentHeader {
+  display: flex;
+  justify-content: space-between;
+  background-color: #cd6133;
+}
+
+#docPortalHeader {
   display: flex;
   justify-content: space-between;
   background-color: #cd6133;
@@ -154,4 +186,39 @@ h2 {
 #homeButton {
   background-color: #cd6133;
   color: white;
+}
+
+#docTitle {
+  padding-left: 10px;
+}
+
+#docPortalTitle {
+  padding-left: 10px;
+}
+
+#container3 {
+  width: 60%;
+  margin: auto;
+  border-radius: 5px;
+}
+
+.toolbar2 {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 3px;
+  width: 80%;
+  margin: auto;
+}
+
+.docsListHeader {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+
+.docsListList {
+  width: 80%;
+  margin: auto;
 }
