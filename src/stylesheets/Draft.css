@@ -143,6 +143,25 @@ h2 {
   width: 225px;
   height: 60px;
   font-size: 20px;
+  color: white;
+}
+
+.modalContainer {
+  text-align: center
+}
+
+.modalTitleInput {
+  margin: 10px;
+  width: 200px;
+}
+
+.modalCollabInput {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.createButton {
+  text-align: center;
 }
 
 #shareableDoc {
