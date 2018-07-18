@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Icon, Header } from 'semantic-ui-react'
-import ModalBasicExample from './NewDocModal.js'
+import NewDocModal from './NewDocModal.js'
 import AddSharedDocModal from './AddSharedDocModal.js'
 
 export default class DocumentsPortal extends React.Component {
@@ -25,7 +25,7 @@ export default class DocumentsPortal extends React.Component {
         <div className='container' id='container3'>
           <div className="toolbar2">
             <div className="createDoc">
-              <ModalBasicExample/>
+              <NewDocModal redirect={this.props.redirect}/>
             </div>
             <div className="shareableDoc">
               <AddSharedDocModal />
