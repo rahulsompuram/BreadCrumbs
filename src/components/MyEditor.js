@@ -88,11 +88,12 @@ export default class MyEditor extends React.Component {
     const { editorState } = this.state;
 
     return (
-      <div className="container">
+      <div className="container" id='editor_page'>
         <div className='container' id="documentHeader">
-          <div className="topnav">
+          <div className="topnav" id='docTitleBox'>
             <h2 id='docTitle'>{this.state.documentTitle}</h2>
           </div>
+          <div id='docTitleButtons'>
             <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
              <Button.Content hidden>Home</Button.Content>
              <Button.Content visible>
@@ -105,6 +106,7 @@ export default class MyEditor extends React.Component {
               <Icon name='sign out alternate icon' />
             </Button.Content>
           </Button>
+          </div>
         </div>
         <div className='container' style={{paddingLeft: '5px'}}>
           <h3>
@@ -187,6 +189,7 @@ export default class MyEditor extends React.Component {
             onKeyDown={(e) => {
               if (e.key === "Tab") {
                 e.preventDefault()
+                console.log('Tab pressed')
                 //TODO TAB INDENT FEATURE
               }
             }}>

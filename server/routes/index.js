@@ -49,6 +49,22 @@ router.post('/register', (req, res) => {
   .catch(err => console.log('Catch in POST REG request', err))
 })
 
+
+router.post('/userDocs', (req, res) => {
+  Document.find({owner: req.body.owner})
+  .then(doc => {
+    if (doc) {
+      res.send(doc)
+    } else {
+      alert ("User not found!")
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    this.props.redirect('LoginPage');
+  })
+})
+
 router.post('/createDoc', (req, res) => {
   Document.findOne({ owner: req.body.owner, title: req.body.title })
     .then(doc => {

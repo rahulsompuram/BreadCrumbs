@@ -21,13 +21,11 @@ export default class LoginPage extends React.Component {
   clickLogin = () => {
     this.socket.emit('login', {username: this.state.username, password: this.state.password}, (res) => {
       if (res) {
-        console.log("HIT HERE");
         this.props.setUserId(res._id);
         this.props.redirect('DocumentsPortal');
       } else {
         this.setState({message: "Invalid username and password pair!"})
       }
-      //res === "DocumentsPortal" ? this.props.redirect(res) : this.setState({message: "Invalid username and password pair!"})
     })
   }
   onChangeUser = (e) => {
@@ -47,7 +45,7 @@ export default class LoginPage extends React.Component {
           BreadCrumbs
         </div>
         <div id="credentials">
-          <Input focus type="text" onChange={this.onChangeUser} value={this.state.username} placeholder='Username'  onKeyDown={(e) => e.key === "Enter" ? this.clickLogin() : null}/>
+          <Input focus type="text" onChange={this.onChangeUser} value={this.state.username} placeholder='Username' />
           <br/>
           <Input focus type="password" onChange={this.onChangePass} value={this.state.password} placeholder='Password' onKeyDown={(e) => e.key === "Enter" ? this.clickLogin() : null}
           />
