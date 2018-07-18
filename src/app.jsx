@@ -24,7 +24,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 'LoginPage',
+      currentPage: 'RegistrationPage',
     };
     this.redirect = this.redirect.bind(this);
   }
