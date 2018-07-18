@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Philosopher');
 @import url('https://fonts.googleapis.com/css?family=Concert+One');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
 .editor {
   min-height: 700px;
   padding: 10px;
@@ -34,7 +35,6 @@ body {
   background: #2c3e50;
   height: 100%;
 }
-<<<<<<< HEAD
 
 #credentials {
   display: flex;
@@ -44,8 +44,6 @@ body {
   width: 25%;
 }
 
-=======
->>>>>>> 958186c30d0669759edbb884a66c89145a2ed1e8
 #loginTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
@@ -133,8 +131,6 @@ h2 {
 }
 #newDoc {
   background-color: #cd6133;
-<<<<<<< HEAD
-=======
   width: 240px;
   height: 60px;
   font-size: 20px;
@@ -164,7 +160,6 @@ h2 {
   width: 240px;
   height: 60px;
   font-size: 20px;
->>>>>>> 958186c30d0669759edbb884a66c89145a2ed1e8
 }
 
 .topnav {
