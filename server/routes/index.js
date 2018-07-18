@@ -41,4 +41,21 @@ router.post('/register', (req, res) => {
   .catch(err => res.send({success: false, error: err}))
 })
 
+
+router.post('/userDocs', (req, res) => {
+  Document.find({owner: req.body.owner})
+    .then(doc => {
+      if (doc) {
+        res.send(doc)
+      } else {
+        alert ("User not found!")
+      }
+    })
+    .catch(err => {
+      console.log(err)
+      this.props.redirect('LoginPage');
+    })
+
+})
+
 export default router
