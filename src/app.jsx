@@ -8,23 +8,8 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       currentPage: 'LoginPage',
-      connecting: true,
     };
     this.redirect = this.redirect.bind(this);
-  }
-
-  componentDidMount() {
-    this.socket = io('http://localhost:1337')
-    this.socket.on('connect', () => this.setState({connecting: null}))
-    this.socket.on('disconnect', () => this.setState({connecting: true}))
-
-  }
-
-  clickLogin = () => {
-    this.socket.emit('login', {username: 'demi', password: 'demi'}, (res) => {
-      console.log('status', res)
-    })
-    console.log('here')
   }
 
   redirect(page) {
@@ -34,7 +19,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div style={{height: '100%'}}>
-        {this.state.currentPage === "LoginPage" ? <LoginPage clickLogin={this.clickLogin} /> : null}
+        {this.state.currentPage === "LoginPage" ? <LoginPage redirect={this.redirect} /> : null}
+        {this.state.currentPage === "MyEditor" ? <MyEditor redirect={this.redirect} /> : null}
       </div>);
   }
 }

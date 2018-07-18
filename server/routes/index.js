@@ -19,11 +19,24 @@ mongoose.connection.on('error', function() {
 });
 mongoose.connect(process.env.MONGODB_URI);
 
+import Document from '../../model/document';
+import User from '../../model/user';
+
 
 
 
 router.get('/ping', (req, res) => {
   res.send('pong')
+})
+
+router.post('/register', (req, res) => {
+  let newUser = new User({
+    username: req.body.username,
+    password: req.body.password
+  })
+  newUser.save()
+  .then(result => res.send({success: true, user: result}))
+  .catch(err => res.send({success: false, error: err}))
 })
 
 export default router

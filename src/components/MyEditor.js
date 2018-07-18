@@ -93,7 +93,7 @@ export default class MyEditor extends React.Component {
           <div className="topnav">
             <h2>{this.state.documentTitle}</h2>
           </div>
-          <Button id="homeButton" animated='vertical'>
+          <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('LoginPage')}>
            <Button.Content hidden>Home</Button.Content>
            <Button.Content visible>
              <Icon name='home' />
