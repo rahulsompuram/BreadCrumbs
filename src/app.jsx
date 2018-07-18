@@ -24,7 +24,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 'MyEditor',
+      currentPage: 'LoginPage',
+      currentUserId: "",
     };
     this.redirect = this.redirect.bind(this);
     this.setUserId = this.setUserId.bind(this);
@@ -34,8 +35,8 @@ export default class App extends React.Component {
     this.setState({ currentPage: page });
   }
 
-  setUserId(username) {
-    this.setState({ currentUserId: username})
+  setUserId(id) {
+    this.setState({ currentUserId: id})
   }
 
   render() {

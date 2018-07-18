@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Icon, Header } from 'semantic-ui-react'
-import Document from '../../model/document.js'
-import User from '../../model/user.js'
 import NewDocModal from './NewDocModal.js'
 import AddSharedDocModal from './AddSharedDocModal.js'
 
@@ -14,21 +12,21 @@ export default class DocumentsPortal extends React.Component {
   }
 
   componentDidMount() {
-    //Do the mongo call to populate the use
-    //TODO
-    Document.find({owner: this.props.currentUserId})
-      .then(doc => {
-        if (doc) {
-          this.setState({userDocs: doc})
-        } else {
-          console.log("User not found");
-          this.props.redirect('LoginPage');
-        }
+    
+    fetch('http://localhost:1337/userDocs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        owner: this.props.currentUserId,
       })
-      .catch(err => {
-        console.log(err)
-        this.props.redirect('LoginPage');
+    })
+      .then(res => res.json())
+      .then(responseJSON => {
+        return this.setState({userDocs: responseJSON})
       })
+      .catch(err => res.send({ 'error': err }))
   }
 
   render() {
@@ -51,7 +49,7 @@ export default class DocumentsPortal extends React.Component {
         <div className='container' id='container3'>
           <div className="toolbar2">
             <div className="createDoc">
-              <NewDocModal redirect={this.props.redirect}/>
+              <NewDocModal currentUserId={this.props.currentUserId} redirect={this.props.redirect}/>
             </div>
             <div className="shareableDoc">
               <AddSharedDocModal />
