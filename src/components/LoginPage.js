@@ -1,6 +1,8 @@
 import React from 'react';
 import { Input } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
+import io from 'socket.io-client'
+
 
 export default class LoginPage extends React.Component {
   constructor(props) {
@@ -9,6 +11,7 @@ export default class LoginPage extends React.Component {
 
     };
   }
+
 
   render() {
     return (
@@ -22,7 +25,7 @@ export default class LoginPage extends React.Component {
           <Input focus type="password" placeholder='Password' />
           <br/>
           <br/>
-          <Button primary>Sign In</Button>
+          <Button onClick={this.props.clickLogin} primary>Sign In</Button>
           <br/>
           <Button id="registerButton">Register</Button>
           <br/>

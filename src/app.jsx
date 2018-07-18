@@ -1,22 +1,15 @@
 import React from 'react';
-<<<<<<< HEAD
 import MyEditor from './components/MyEditor'
 import io from 'socket.io-client'
-=======
 import LoginPage from './components/LoginPage'
->>>>>>> 1639637864ac7daeec8bff615ce0489b4aa3a5e1
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD
     this.state = {
-      currentPage: 'MyEditor',
+      currentPage: 'LoginPage',
       connecting: true,
     };
-=======
-    this.state = { currentPage: 'LoginPage' };
->>>>>>> 1639637864ac7daeec8bff615ce0489b4aa3a5e1
     this.redirect = this.redirect.bind(this);
   }
 
@@ -25,10 +18,13 @@ export default class App extends React.Component {
     this.socket.on('connect', () => this.setState({connecting: null}))
     this.socket.on('disconnect', () => this.setState({connecting: true}))
 
-    //put this into LoginPage onClick button
-    this.socket.emit('login', {username: 'demi', password: 'test'}, (res) => {
+  }
+
+  clickLogin = () => {
+    this.socket.emit('login', {username: 'demi', password: 'demi'}, (res) => {
       console.log('status', res)
     })
+    console.log('here')
   }
 
   redirect(page) {
@@ -38,7 +34,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div style={{height: '100%'}}>
-        {this.state.currentPage === "LoginPage" ? <LoginPage /> : null}
+        {this.state.currentPage === "LoginPage" ? <LoginPage clickLogin={this.clickLogin} /> : null}
       </div>);
   }
 }
