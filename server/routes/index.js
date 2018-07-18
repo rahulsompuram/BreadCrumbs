@@ -75,4 +75,35 @@ router.post('/createDoc', (req, res) => {
 
 })
 
+router.post('/shareable', (req, res) => {
+  Document.findOne({_id: req.body.shareableId})
+    .then(doc => {
+      if (doc) {
+        if (doc.password === req.body.password) {
+          User.findOne({_id: req.body.currentUserId})
+            .then(user => {
+              if (user) {
+                if (!doc.collaboratorList.includes(user._id)) {
+                  doc.collaboratorList.push(user._id);
+                  alert('Done 1');
+                }
+                if (!user.docList.includes(doc._id)) {
+                  user.docList.push(doc._id);
+                  alert('Done 2');
+                }
+              } else {
+                alert('User was not found');
+              }
+            })
+            .catch(err => res.send({ 'error': err }))
+        } else {
+          alert('Incorrect shareable password');
+        }
+      } else {
+        alert('Document was not found');
+      }
+    })
+    .catch(err => res.send({ 'error': err }))
+})
+
 export default router

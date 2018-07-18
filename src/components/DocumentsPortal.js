@@ -12,7 +12,6 @@ export default class DocumentsPortal extends React.Component {
   }
 
   componentDidMount() {
-    
     fetch('http://localhost:1337/userDocs', {
       method: 'POST',
       headers: {
@@ -61,14 +60,9 @@ export default class DocumentsPortal extends React.Component {
             <br />
             <div className='docsListList'>
               <ul>
-<<<<<<< HEAD
-                <li><a href='#' onClick={() => this.props.redirect('MyEditor')}>Document1</a></li>
-                <li><a href='#'>Document 2</a></li>
-=======
                 {this.state.userDocs.map((doc) => {
                   return <li><a href="#">{doc.title}</a></li>
                 })}
->>>>>>> ccc3333aa42a19a501bc98a610453a7ad4a50a49
               </ul>
             </div>
           </div>
