@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Scrollable } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
 import { Button, Icon, Input } from 'semantic-ui-react'
@@ -174,14 +174,14 @@ export default class MyEditor extends React.Component {
             </Button.Group>
           </div>
           <br />
-          <div className="editor" style={{backgroundColor: 'white', width: '80%', margin: 'auto', paddingBottom: '10px'}}
+          <div className="editor" style={{backgroundColor: 'white', width: '80%', margin: 'auto', paddingBottom: '10px', overflow: 'scroll'}}
             onKeyDown={(e) => {
-            if (e.key === "Tab") {
-              e.preventDefault()
-              // TODO TAB INDENT FEATURE
+              if (e.key === "Tab") {
+                e.preventDefault()
+                //TODO TAB INDENT FEATURE
+              }
+            }}>
 
-            }
-          }}>
             <Editor
               editorState={editorState}
               customStyleMap={styleMap}
