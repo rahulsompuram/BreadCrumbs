@@ -91,7 +91,7 @@ export default class MyEditor extends React.Component {
       <div className="container">
         <div className='container' id="documentHeader">
           <div className="topnav">
-            <h2>{this.state.documentTitle}</h2>
+            <h2 id='docTitle'>{this.state.documentTitle}</h2>
           </div>
           <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
            <Button.Content hidden>Home</Button.Content>

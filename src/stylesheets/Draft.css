@@ -114,13 +114,24 @@ h2 {
   padding: 10px;
 }
 
+#credentials {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 25%;
+  margin: auto;
+}
+
 .docsList {
-  margin: 5px;
-  padding: 10px;
-  border: solid 1px #cd6133;
-  border-radius: 2px;
   justify-content: center;
   align-items: center;
+  min-height: 700px;
+  padding: 10px;
+  border: solid 1px gray;
+  border-radius: 2px;
+  background-color: white;
+  width: 80%;
+  margin: auto;
 }
 
 .logoutButton {
@@ -149,6 +160,12 @@ h2 {
 
 .createButton {
   text-align: center;
+}
+
+#shareableDoc {
+  background-color: #cd6133;
+}
+
 .topnav {
   background-color: #cd6133;
   margin: 0;
@@ -160,7 +177,52 @@ h2 {
   background-color: #cd6133;
 }
 
+#docPortalHeader {
+  display: flex;
+  justify-content: space-between;
+  background-color: #cd6133;
+}
+
 #homeButton {
   background-color: #cd6133;
   color: white;
+}
+
+#docTitle {
+  padding-left: 10px;
+}
+
+#docPortalTitle {
+  padding-left: 10px;
+}
+
+#container3 {
+  background-color: lightgray;
+  width: 60%;
+  margin: auto;
+  border-radius: 5px;
+}
+
+.toolbar2 {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 3px;
+  width: 80%;
+  margin: auto;
+}
+
+.docsListHeader {
+  display: flex;
+  justify-content: center;
+}
+
+#docsListH3 {
+  border-bottom: 1px solid black;
+}
+
+.docsListList {
+  width: 80%;
+  margin: auto;
 }
