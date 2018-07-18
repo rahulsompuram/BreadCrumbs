@@ -19,13 +19,16 @@ const AddSharedDocModal = () => {
     </Modal.Content>
     <Modal.Actions>
       <div className="modalContainer">
-        <div className="modalSharedIdInput ui input">
-          <input type="text" placeholder="Insert shareable ID"/>
+        <div className="modalTitleInput ui input">
+          <input type="text" placeholder="Enter shareable ID"/>
+        </div>
+        <br/>
+        <div className="modalTitleInput ui input">
+          <input type="password" placeholder="Enter document password"/>
         </div>
         <br/>
         <Button className="ui blue button">Add</Button>
       </div>
-
     </Modal.Actions>
   </Modal>
   );

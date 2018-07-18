@@ -19,8 +19,6 @@ export default class DocumentsPortal extends React.Component {
             </Button.Content>
           </Button>
         </div>
-
-
         <br />
         <div className='container' id='container3'>
           <div className="toolbar2">
@@ -28,7 +26,7 @@ export default class DocumentsPortal extends React.Component {
               <NewDocModal redirect={this.props.redirect}/>
             </div>
             <div className="shareableDoc">
-              <AddSharedDocModal />
+              <AddSharedDocModal currentUserId={this.props.currentUserId} />
             </div>
           </div>
 
