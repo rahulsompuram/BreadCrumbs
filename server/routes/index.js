@@ -45,13 +45,18 @@ router.post('/createDoc', (req, res) => {
   let newDoc = new Document({
     title: req.body.title,
     password: req.body.password,
-    collaboratorList: req.body.collaboratorStr.split(",").map(user => {
-      User.findOne({username: user.trim()})
-      .then(user => user ? user._id : alert(`${user.username} not found.`))
-      .catch(err => res.send({ "error": err }))
-    }),
+    // collaboratorList: Promise.all(req.body.collaboratorStr.split(",").map(user => {
+    //   return User.findOne({username: user.trim()})
+    //   .then(user => user ? user._id : null)
+    //   .catch(err => res.send({ "error": err }))
+    // }))
+    // .then(result => result.concat(req.body.owner)),
     owner: req.body.owner
   })
+  newDoc.save()
+  .then(result => res.send({success: true, docSave: result}))
+  .catch(err => res.send({success: false, errorSaving: err}))
+
 })
 
 export default router

@@ -161,6 +161,15 @@ h2 {
   background-color: #cd6133;
   margin: 0;
 }
+
+.topnav2 {
+  background-color: white;
+  margin: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
 #documentHeader {
   display: flex;
   justify-content: space-between;
@@ -176,6 +185,11 @@ h2 {
 #homeButton {
   background-color: #cd6133;
   color: white;
+}
+
+#loginRedirectButton {
+  color: #cd6133;
+  background-color: white;
 }
 
 #docTitle {
