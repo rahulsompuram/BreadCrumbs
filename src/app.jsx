@@ -24,7 +24,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 'RegistrationPage',
+      currentPage: 'LoginPage',
+      currentUserId: "",
     };
     this.redirect = this.redirect.bind(this);
   }
@@ -38,7 +39,7 @@ export default class App extends React.Component {
       <div style={{height: '100%'}}>
         {this.state.currentPage === "LoginPage" ? <LoginPage redirect={this.redirect} /> : null}
         {this.state.currentPage === "MyEditor" ? <MyEditor redirect={this.redirect} /> : null}
-        {this.state.currentPage === "DocumentsPortal" ? <DocumentsPortal redirect={this.redirect} /> : null}
+        {this.state.currentPage === "DocumentsPortal" ? <DocumentsPortal currentUserId={this.state.currentUserId} redirect={this.redirect} /> : null}
         {this.state.currentPage === "RegistrationPage" ? <RegistrationPage redirect={this.redirect} /> : null}
       </div>);
   }

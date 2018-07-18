@@ -41,4 +41,17 @@ router.post('/register', (req, res) => {
   .catch(err => res.send({success: false, error: err}))
 })
 
+router.post('/createDoc', (req, res) => {
+  let newDoc = new Document({
+    title: req.body.title,
+    password: req.body.password,
+    collaboratorList: req.body.collaboratorStr.split(",").map(user => {
+      User.findOne({username: user.trim()})
+      .then(user => user ? user._id : alert(`${user.username} not found.`))
+      .catch(err => res.send({ "error": err }))
+    }),
+    owner: req.body.owner
+  })
+})
+
 export default router
