@@ -30,33 +30,47 @@ router.get('/ping', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  let newUser = new User({
-    username: req.body.username,
-    password: req.body.password,
-    fName: req.body.fName,
-    lName: req.body.lName
+  User.findOne({ username: req.body.username })
+  .then(user => {
+    if(user){
+      res.send({success: false, message: "This username has already been taken."});
+    } else {
+      let newUser = new User({
+        username: req.body.username,
+        password: req.body.password,
+        fName: req.body.fName,
+        lName: req.body.lName
+      })
+      newUser.save()
+      .then(result => res.send({success: true, user: result}))
+      .catch(err => res.send({success: false, error: err}))
+    }
   })
-  newUser.save()
-  .then(result => res.send({success: true, user: result}))
-  .catch(err => res.send({success: false, error: err}))
+  .catch(err => console.log('Catch in POST REG request', err))
 })
 
 router.post('/createDoc', (req, res) => {
-  let newDoc = new Document({
-    title: req.body.title,
-    password: req.body.password,
-    // collaboratorList: Promise.all(req.body.collaboratorStr.split(",").map(user => {
-    //   return User.findOne({username: user.trim()})
-    //   .then(user => user ? user._id : null)
-    //   .catch(err => res.send({ "error": err }))
-    // }))
-    // .then(result => result.concat(req.body.owner)),
-    owner: req.body.owner
-  })
-  newDoc.save()
-  .then(result => res.send({success: true, docSave: result}))
-  .catch(err => res.send({success: false, errorSaving: err}))
-
+  Document.findOne({ owner: req.body.owner, title: req.body.title })
+    .then(doc => {
+      if(doc){
+        res.send({success: false, message: "This title is being used."})
+      } else {
+        let newDoc = new Document({
+          title: req.body.title,
+          password: req.body.password,
+          // collaboratorList: Promise.all(req.body.collaboratorStr.split(",").map(user => {
+          //   return User.findOne({username: user.trim()})
+          //   .then(user => user ? user._id : null)
+          //   .catch(err => res.send({ "error": err }))
+          // }))
+          // .then(result => result.concat(req.body.owner)),
+          owner: req.body.owner
+        });
+        newDoc.save()
+        .then(result => res.send({success: true, docSave: result}))
+        .catch(err => res.send({success: false, errorSaving: err}))
+      }
+    })
 })
 
 export default router
