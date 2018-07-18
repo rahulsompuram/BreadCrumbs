@@ -2,6 +2,8 @@ import React from 'react';
 import { Input } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
 
+import User from '../../model/user';
+
 export default class RegistrationPage extends React.Component {
   constructor(props) {
     super(props);
@@ -16,25 +18,33 @@ export default class RegistrationPage extends React.Component {
   }
 
   onRegClick = () => {
-    if(this.state.password === this.state.passwordRepeat){
-      fetch('http://localhost:1337/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            username: this.state.username,
-            password: this.state.password,
-            fName: this.state.fName,
-            lName: this.state.lName
+    User.findOne({ username: this.state.username })
+    .then(user => {
+      if(user){
+        this.setState({ message: "This username has already been taken." });
+      } else {
+        if(this.state.password === this.state.passwordRepeat){
+          fetch('http://localhost:1337/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              username: this.state.username,
+              password: this.state.password,
+              fName: this.state.fName,
+              lName: this.state.lName
+            })
           })
-      })
-      .then(res => res.json())
-      .then(res => this.props.redirect('LoginPage'))
-      .catch(err => console.log('FETCH ERROR', err))
-    } else {
-      this.setState({message: "Passwords do not match!"})
-    }
+          .then(res => res.json())
+          .then(res => res.success ? this.props.redirect('LoginPage') : null)
+          .catch(err => res.send({ 'error': err }))
+        } else {
+          this.setState({message: "Passwords do not match!"})
+        }
+      }
+    })
+    .catch(err => res.send({'error': err}))
   }
 
   onChgNameF = (e) => { this.setState({fName: e.target.value}) }

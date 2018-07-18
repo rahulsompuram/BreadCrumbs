@@ -44,7 +44,8 @@ export default class MyEditor extends React.Component {
       editorState: EditorState.createEmpty(),
       fontSize: 15,
       documentTitle: 'Edit Document',
-      value: ''
+      value: '',
+      shareableID: '12345'
     };
     this.onChange = editorState => this.setState({ editorState });
     this.getEditorState = () => this.state.editorState;
@@ -92,20 +93,25 @@ export default class MyEditor extends React.Component {
           <div className="topnav">
             <h2 id='docTitle'>{this.state.documentTitle}</h2>
           </div>
-          <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
-           <Button.Content hidden>Home</Button.Content>
-           <Button.Content visible>
-             <Icon name='home' />
-           </Button.Content>
-         </Button>
-         <Button id="homeButton" animated='vertical'>
-          <Button.Content hidden>Logout</Button.Content>
-          <Button.Content visible>
-            <Icon name='sign out alternate icon' />
-          </Button.Content>
-        </Button>
+            <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
+             <Button.Content hidden>Home</Button.Content>
+             <Button.Content visible>
+               <Icon name='home' />
+             </Button.Content>
+           </Button>
+           <Button id="homeButton" animated='vertical'>
+            <Button.Content hidden>Logout</Button.Content>
+            <Button.Content visible>
+              <Icon name='sign out alternate icon' />
+            </Button.Content>
+          </Button>
         </div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <div className='container' style={{paddingLeft: '5px'}}>
+          <h3>
+            Shareable ID: {this.state.shareableID}
+          </h3>
+        </div>
+        <form onSubmit={this.handleSubmit.bind(this)} style={{paddingLeft: '10px'}}>
           <label id='update_label'>
             Update title:
             <input type="text" name="name" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)}/>

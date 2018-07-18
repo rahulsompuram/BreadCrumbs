@@ -151,6 +151,11 @@ h2 {
   margin-bottom: 10px;
 }
 
+.modalSharedIdInput {
+  margin: 10px;
+  width: 200px;
+}
+
 .createButton {
   text-align: center;
 }
@@ -216,4 +221,14 @@ h2 {
 .docsListList {
   width: 80%;
   margin: auto;
+}
+
+#documentIdName {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #cd6133;
+}
+
+h3 {
+  color: #cd6133;
 }
