@@ -80,10 +80,18 @@ router.post('/createDoc', (req, res) => {
           //   .catch(err => res.send({ "error": err }))
           // }))
           // .then(result => result.concat(req.body.owner)),
-          owner: req.body.owner
+          owner: req.body.owner,
+          createdTime: Date(),
+          lastEditTime: Date(),
+          collaboratorList: [req.body.owner]
         });
         newDoc.save()
-        .then(result => res.send({success: true, docSave: result}))
+        .then(doc => {
+          User.findOneAndUpdate({_id: req.body.owner}, { $addToSet: { docList: doc._id } })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+        })
+        .then(result => res.send({success: true, result: result}))
         .catch(err => res.send({success: false, errorSaving: err}))
       }
     })
