@@ -39,7 +39,7 @@ export default class DocumentsPortal extends React.Component {
             <br />
             <div className='docsListList'>
               <ul>
-                <li><a href='#'>Document 1</a></li>
+                <li><a href='#' onClick={() => this.props.redirect('MyEditor')}>Document1</a></li>
                 <li><a href='#'>Document 2</a></li>
               </ul>
             </div>
