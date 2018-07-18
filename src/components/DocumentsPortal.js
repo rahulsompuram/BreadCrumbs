@@ -25,33 +25,45 @@ export default class DocumentsPortal extends React.Component {
 
   render() {
     return(
-      <div>
-
-        <h1 className='docPortal'>Documents Portal</h1>
-
-        <div className="logoutButton">
-          <Button className="ui icon button">
-            <i className="sign out alternate icon"></i>
+      <div className='container'>
+        <div className='container' id="docPortalHeader">
+          <div className="topnav">
+            <h2 id='docPortalTitle'>Documents Portal</h2>
+          </div>
+          <Button id="homeButton" animated='vertical'>
+            <Button.Content hidden>Logout</Button.Content>
+            <Button.Content visible>
+              <Icon name='sign out alternate icon' />
+            </Button.Content>
           </Button>
         </div>
-
-        <div className="createDoc">
-          <Button id="newDoc" onMouseDown={(e) => {
-          console.log("Does this work?")
-        }} className="ui primary button">New Document</Button>
+        <br />
+        <div className='container' id='container3'>
+          <div className="toolbar2">
+            <div className="createDoc">
+              <Button id="newDoc" onMouseDown={(e) => {
+              console.log("Does this work?")
+            }} className="ui primary button">New Document</Button>
+            </div>
+            <div className="shareableDoc">
+              <Button id="shareableDoc" onMouseDown={(e) => {
+              console.log("Does this work?")
+            }} className="ui primary button">Create Shareable Document</Button>
+            </div>
+          </div>
+          <div className='docsList'>
+            <div className='docsListHeader'>
+              <h3 id='docsListH3'>My Documents</h3>
+            </div>
+            <br />
+            <div className='docsListList'>
+              <u1>
+                <li><a href='#'>Document 1</a></li>
+                <li><a href='#'>Document 2</a></li>
+              </u1>
+            </div>
+          </div>
         </div>
-
-        <div className='docsList'>
-          <h3>My Documents</h3>
-          <u1>
-            <li><a href='#'>Document 1</a></li>
-            <li><a href='#'>Document 2</a></li>
-          </u1>
-        </div>
-
-
-
-
       </div>
     )
   }
