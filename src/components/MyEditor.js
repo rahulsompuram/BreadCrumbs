@@ -55,53 +55,39 @@ export default class MyEditor extends React.Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
     // fetch to get the contents of doc fetch('')
     this.socket = io('http://localhost:1337');
     this.socket.on('connect', () => {
       console.log('Connected to server');
-      this.socket.emit('joinDocument', this.props.docId);
+      this.socket.emit('joinDocument', [this.props.docId,
+        convertToRaw(this.state.editorState.getCurrentContent())]);
+      this.socket.on('fetch', () => {
+        fetch('http://localhost:1337/loadDoc?docId=' + this.props.docId)
+        .then(res => res.json())
+        .then(responseJSON => {
+          if (responseJSON.message === "Success") {
+            this.setState({
+              documentTitle: this.props.docTitle,
+              shareableID: this.props.docId,
+              editorState: EditorState.createWithContent(convertFromRaw(responseJSON.docEditorState.editorState))
+            })
+          } else {
+            this.setState({
+              documentTitle: this.props.docTitle,
+              shareableID: this.props.docId,
+              editorState: EditorState.createEmpty()
+            })
+          }
+        })
+        .catch(err => console.log("MyEditor loding doc error: ", err))
+      })
+      this.socket.on('liveContent', (editorState) => {
+        this.setState({
+          editorState: EditorState.createWithContent(convertFromRaw(editorState))
+        })
+      })
     });
-
-    this.setState({
-      documentTitle: this.props.docTitle,
-      shareableID: this.props.docId
-=======
-    fetch('http://localhost:1337/loadDoc?docId=' + this.props.docId)
-    .then(res => res.json())
-    .then(responseJSON => {
-      if (responseJSON.message === "Success") {
-        this.setState({
-          documentTitle: this.props.docTitle,
-          shareableID: this.props.docId,
-          editorState: EditorState.createWithContent(convertFromRaw(responseJSON.docEditorState.editorState))
-        })
-      } else {
-        this.setState({
-          documentTitle: this.props.docTitle,
-          shareableID: this.props.docId,
-          editorState: EditorState.createEmpty()
-        })
-      }
->>>>>>> 15c816e81dbc52973f1110d21fea6267783ff0fd
-    })
-    .catch(err => console.log("MyEditor loding doc error: ", err))
-
   }
-
-
-
-
-  // clickLogin = () => {
-  //   this.socket.emit('login', {username: this.state.username, password: this.state.password}, (res) => {
-  //     if (res) {
-  //       this.props.setUserId(res._id);
-  //       this.props.redirect('DocumentsPortal');
-  //     } else {
-  //       this.setState({message: "Invalid username and password pair!"})
-  //     }
-  //   })
-  // }
 
   toggleInlineStyle(e, inlineStyle) {
     e.preventDefault();

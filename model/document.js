@@ -33,7 +33,7 @@ var DocumentSchema = new Schema({
   },
   lastEditTime: {
     type: Date
-  }
+  },
 },
   {
     minimize: false
