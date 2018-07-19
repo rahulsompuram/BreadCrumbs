@@ -146,7 +146,7 @@ export default class MyEditor extends React.Component {
         <div className='container' id="documentHeader">
           <div id='top_of'>
             <div className="topnav" id='docTitleBox'>
-              <Input id='docTitle' focus type="text" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)} onKeyDown={(e) => e.key === "Enter" ? console.log('enter pressed') : null}/>
+              <Input id='docTitle' focus type="text" placeholder={this.state.documentTitle} onChange={this.handleTitleChange}/>
               <div className='container' id='shareableIDBox'>
                 <div id='shareable_id_text'>
                   <h3>Shareable ID: </h3>
