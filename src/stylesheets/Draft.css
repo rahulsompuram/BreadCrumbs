@@ -115,6 +115,8 @@ h2 {
   width: 60%;
   margin: auto;
   border-radius: 5px;
+  border: 1px solid #cd6133;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .docPortal {
   text-align: center;
@@ -200,6 +202,8 @@ h2 {
 
 #docTitleBox {
   width: 47%;
+  display: flex;
+  flex-direction: column;
 }
 
 #docTitleButtons {
@@ -214,7 +218,7 @@ h2 {
   flex-direction: column;
   background-color: #cd6133;
   margin: 5px;
-  height: 75px;
+  height: 80px;
 }
 
 #top_of {
@@ -257,7 +261,6 @@ h2 {
   color: white;
   font-size: 28px;
   height: 30px;
-  padding-left: -5px;
   border: 1px solid #cd6133;
 }
 
@@ -294,7 +297,34 @@ h2 {
 }
 
 #shareableIDBox {
-  padding-left: 14px;
+  margin-top: 5px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+#shareable_id_text {
+  width: 15%;
+  min-width: 120px;
+}
+
+#shareable_id_id {
+  width: 60%;
+  height: 30px;
+  opacity: 0;
+}
+
+#shareable_id_id:hover {
+  opacity: 100 !important;
+}
+
+@media only screen and (max-width: 800px) {
+  #documentHeader {
+    height: 110px;
+  }
+  #shareableIDBox {
+    height: 45px;
+  }
 }
 
 #updateTitleBox {

@@ -141,6 +141,16 @@ export default class MyEditor extends React.Component {
           <div id='top_of'>
             <div className="topnav" id='docTitleBox'>
               <Input id='docTitle' focus type="text" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)} onKeyDown={(e) => e.key === "Enter" ? console.log('enter pressed') : null}/>
+              <div className='container' id='shareableIDBox'>
+                <div id='shareable_id_text'>
+                  <h3>Shareable ID: </h3>
+                </div>
+                <div id='shareable_id_id'>
+                  <h3>
+                    {this.state.shareableID}
+                  </h3>
+                </div>
+              </div>
             </div>
             <div id='docTitleButtons'>
               <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
@@ -149,19 +159,12 @@ export default class MyEditor extends React.Component {
                  <Icon name='home' />
                </Button.Content>
              </Button>
-             <Button id="homeButton" animated='vertical'>
+             <Button onClick={() => this.props.redirect('LoginPage')} id="homeButton" animated='vertical'>
               <Button.Content hidden>Logout</Button.Content>
               <Button.Content visible>
                 <Icon name='sign out alternate icon' />
               </Button.Content>
             </Button>
-            </div>
-          </div>
-          <div id='bottom_of'>
-            <div className='container' id='shareableIDBox'>
-              <h3>
-                Shareable ID: {this.state.shareableID}
-              </h3>
             </div>
           </div>
         </div>
