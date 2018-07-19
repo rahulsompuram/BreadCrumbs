@@ -11,6 +11,7 @@ const server = http.Server(app)
 const io = socketIO(server)
 
 io.on('connection', function (socket) {
+  console.log('Client connected');
   auth(socket)
 })
 

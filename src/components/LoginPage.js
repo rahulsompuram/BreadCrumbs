@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
 import io from 'socket.io-client'
+
 export default class LoginPage extends React.Component {
   constructor(props) {
     super(props);

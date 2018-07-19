@@ -1,8 +1,8 @@
 import React, { Component, Scrollable } from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
-import { Button, Icon, Input } from 'semantic-ui-react'
-
+import { Button, Icon, Input } from 'semantic-ui-react';
+import io from 'socket.io-client';
 
 const styleMap = {
   'UPPERCASE': {
@@ -50,16 +50,36 @@ export default class MyEditor extends React.Component {
     this.onChange = editorState => this.setState({ editorState });
     this.getEditorState = () => this.state.editorState;
     this.picker = colorPickerPlugin(this.onChange, this.getEditorState);
+    this.socket = "";
   }
 
   componentDidMount() {
     // fetch to get the contents of doc fetch('')
+    this.socket = io('http://localhost:1337');
+    this.socket.on('connect', () => {
+      console.log('Connected to server');
+      this.socket.emit('joinDocument', this.props.docId);
+    });
 
     this.setState({
       documentTitle: this.props.docTitle,
       shareableID: this.props.docId
     })
   }
+
+
+
+
+  // clickLogin = () => {
+  //   this.socket.emit('login', {username: this.state.username, password: this.state.password}, (res) => {
+  //     if (res) {
+  //       this.props.setUserId(res._id);
+  //       this.props.redirect('DocumentsPortal');
+  //     } else {
+  //       this.setState({message: "Invalid username and password pair!"})
+  //     }
+  //   })
+  // }
 
   toggleInlineStyle(e, inlineStyle) {
     e.preventDefault();
