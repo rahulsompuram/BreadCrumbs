@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 'MyEditor',
+      currentPage: 'LoginPage',
       currentUserId: '',
       currentUsername: '',
       currentDocId: '',
