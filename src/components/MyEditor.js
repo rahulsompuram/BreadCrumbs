@@ -43,13 +43,20 @@ export default class MyEditor extends React.Component {
     this.state = {
       editorState: EditorState.createEmpty(),
       fontSize: 15,
-      documentTitle: 'Edit Document',
+      documentTitle: '',
       value: '',
-      shareableID: '12345'
+      shareableID: ''
     };
     this.onChange = editorState => this.setState({ editorState });
     this.getEditorState = () => this.state.editorState;
     this.picker = colorPickerPlugin(this.onChange, this.getEditorState);
+  }
+
+  componentDidMount() {
+    this.setState({
+      documentTitle: this.props.docTitle,
+      shareableID: this.props.docId
+    })
   }
 
   toggleInlineStyle(e, inlineStyle) {

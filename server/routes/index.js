@@ -43,19 +43,14 @@ router.post('/register', (req, res) => {
 
 
 router.post('/userDocs', (req, res) => {
-  Document.find({owner: req.body.owner})
-  .then(doc => {
-    if (doc) {
-      res.send(doc)
-    } else {
-      alert ("User not found!")
-    }
+  var userDocuments = [];
+  Document.find({collaboratorList: req.body.owner})
+    .then((docs) => res.send(docs))
+    .catch(err => {
+      console.log(err)
+    })
   })
-  .catch(err => {
-    console.log(err)
-    this.props.redirect('LoginPage');
-  })
-})
+
 
 router.post('/createDoc', (req, res) => {
   let newDoc = new Document({

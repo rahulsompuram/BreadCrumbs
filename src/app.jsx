@@ -25,10 +25,13 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       currentPage: 'LoginPage',
-      currentUserId: "",
+      currentUserId: '',
+      currentDocId: '',
+      currentDocTitle: ''
     };
     this.redirect = this.redirect.bind(this);
     this.setUserId = this.setUserId.bind(this);
+    this.setDocInfo = this.setDocInfo.bind(this);
   }
 
   redirect(page) {
@@ -39,12 +42,19 @@ export default class App extends React.Component {
     this.setState({ currentUserId: id})
   }
 
+  setDocInfo(id, title) {
+    this.setState({
+      currentDocId: id,
+      currentDocTitle: title
+    })
+  }
+
   render() {
     return (
       <div style={{height: '100%'}}>
         {this.state.currentPage === "LoginPage" ? <LoginPage redirect={this.redirect} setUserId={this.setUserId}/> : null}
-        {this.state.currentPage === "MyEditor" ? <MyEditor redirect={this.redirect} /> : null}
-        {this.state.currentPage === "DocumentsPortal" ? <DocumentsPortal redirect={this.redirect} currentUserId={this.state.currentUserId}/> : null}
+        {this.state.currentPage === "MyEditor" ? <MyEditor redirect={this.redirect} docTitle={this.state.currentDocTitle} docId={this.state.currentDocId}/> : null}
+        {this.state.currentPage === "DocumentsPortal" ? <DocumentsPortal redirect={this.redirect} setDocInfo={this.setDocInfo} currentUserId={this.state.currentUserId}/> : null}
         {this.state.currentPage === "RegistrationPage" ? <RegistrationPage redirect={this.redirect} /> : null}
       </div>);
   }
