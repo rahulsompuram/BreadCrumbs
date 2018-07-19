@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Philosopher');
 @import url('https://fonts.googleapis.com/css?family=Concert+One');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
 .editor {
   min-height: 700px;
   padding: 10px;
   border: solid 1px gray;
   border-radius: 2px;
   background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .toolbar {
   padding-top: 10px;
@@ -34,6 +36,15 @@ body {
   background: #2c3e50;
   height: 100%;
 }
+
+#credentials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 25%;
+}
+
 #loginTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
@@ -45,6 +56,8 @@ body {
   justify-content: center;
   height: 300px;
 }
+
+
 #registrationTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
@@ -114,6 +127,7 @@ h2 {
   background-color: white;
   width: 80%;
   margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .logoutButton {
   text-align: right;
@@ -123,8 +137,9 @@ h2 {
   background-color: #cd6133;
   width: 240px;
   height: 60px;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .modalContainer {
@@ -138,7 +153,7 @@ h2 {
 
 .modalCollabInput {
   width: 200px;
-  margin-bottom: 10px;
+  margin: 10px;
 }
 
 .modalSharedIdInput {
@@ -154,7 +169,8 @@ h2 {
   background-color: #cd6133;
   width: 240px;
   height: 60px;
-  font-size: 20px;
+  font-size: 18px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .topnav {
@@ -170,16 +186,29 @@ h2 {
   align-items: center;
 }
 
+#docTitleBox {
+  width: 47%;
+}
+
+#docTitleButtons {
+  width: 53%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 #documentHeader {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   background-color: #cd6133;
+  margin: -10px;
 }
 
 #docPortalHeader {
   display: flex;
   justify-content: space-between;
   background-color: #cd6133;
+  margin: -10px;
 }
 
 #homeButton {
@@ -222,6 +251,16 @@ h2 {
   border-bottom: 1px solid black;
 }
 
+#shareableIDBox {
+  margin-left: -10px;
+  padding-left: 10px;
+}
+
+#updateTitleBox {
+  margin-left: -10px;
+  padding-left: 10px;
+}
+
 .docsListList {
   width: 80%;
   margin: auto;
@@ -233,6 +272,24 @@ h2 {
   background-color: #cd6133;
 }
 
+#docsListH3 {
+  font-size: 24px;
+}
+
 h3 {
   color: #cd6133;
+}
+
+#credentials > Button {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+
+#register_inputs > Button {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
+
+#editor_page {
+  overflow: 'scroll';
 }

@@ -9,6 +9,7 @@ export default class DocumentsPortal extends React.Component {
     this.state = {
       userDocs: []
     }
+    this.addShareable = this.addShareable.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +30,12 @@ export default class DocumentsPortal extends React.Component {
       .catch(err => res.send({ 'error': err }))
   }
 
+  addShareable(doc) {
+    this.setState({
+      userDocs: [doc].concat(this.state.userDocs)
+    })
+  }
+
   render() {
     return(
       <div className='container'>
@@ -36,23 +43,21 @@ export default class DocumentsPortal extends React.Component {
           <div className="topnav">
             <h2 id='docPortalTitle'>Documents Portal</h2>
           </div>
-          <Button id="homeButton" animated='vertical'>
+          <Button onClick={() => this.props.redirect('LoginPage')} id="homeButton" animated='vertical'>
             <Button.Content hidden>Logout</Button.Content>
             <Button.Content visible>
               <Icon name='sign out alternate icon' />
             </Button.Content>
           </Button>
         </div>
-
-
         <br />
         <div className='container' id='container3'>
           <div className="toolbar2">
             <div className="createDoc">
-              <NewDocModal currentUserId={this.props.currentUserId} redirect={this.props.redirect}/>
+              <NewDocModal setDocInfo={this.props.setDocInfo} currentUserId={this.props.currentUserId} redirect={this.props.redirect}/>
             </div>
             <div className="shareableDoc">
-              <AddSharedDocModal />
+              <AddSharedDocModal redirect={this.props.redirect} currentUserId={this.props.currentUserId} addShareable={this.addShareable}/>
             </div>
           </div>
 

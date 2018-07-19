@@ -53,6 +53,8 @@ export default class MyEditor extends React.Component {
   }
 
   componentDidMount() {
+    // fetch to get the contents of doc fetch('')
+
     this.setState({
       documentTitle: this.props.docTitle,
       shareableID: this.props.docId
@@ -91,40 +93,65 @@ export default class MyEditor extends React.Component {
     this.setState({documentTitle: this.state.value});
   }
 
+  onSaveClick() {
+    fetch('http://localhost:1337/saveDoc', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        docContent: this.state.value,
+        docId: this.state.shareableID
+      })
+    })
+    .then(res => res.json())
+    .then(responseJSON => {
+      if (responseJSON.message === "Saved!") {
+        alert("Saved!")
+      } else {
+        alert("There was an error saving the document.")
+      }
+    })
+  }
+
   render() {
     const { editorState } = this.state;
 
     return (
-      <div className="container">
+      <div className="container" id='editor_page'>
         <div className='container' id="documentHeader">
-          <div className="topnav">
+          <div className="topnav" id='docTitleBox'>
             <h2 id='docTitle'>{this.state.documentTitle}</h2>
           </div>
+          <div id='docTitleButtons'>
             <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
              <Button.Content hidden>Home</Button.Content>
              <Button.Content visible>
                <Icon name='home' />
              </Button.Content>
            </Button>
-           <Button id="homeButton" animated='vertical'>
+           <Button onClick={() => this.props.redirect('LoginPage')} id="homeButton" animated='vertical'>
             <Button.Content hidden>Logout</Button.Content>
             <Button.Content visible>
               <Icon name='sign out alternate icon' />
             </Button.Content>
           </Button>
+          </div>
         </div>
-        <div className='container' style={{paddingLeft: '5px'}}>
+        <div className='container' id='shareableIDBox'>
           <h3>
             Shareable ID: {this.state.shareableID}
           </h3>
         </div>
-        <form onSubmit={this.handleSubmit.bind(this)} style={{paddingLeft: '10px'}}>
-          <label id='update_label'>
-            Update title:
-            <input type="text" name="name" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)}/>
-          </label>
-          <input type="submit" value="Change!" />
-        </form>
+        <div className='container' id='updateTitleBox'>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <label id='update_label'>
+              Update title:
+              <input type="text" name="name" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)}/>
+            </label>
+            <input type="submit" value="Change!" />
+          </form>
+        </div>
 
         <br />
         <div className='container' id='container2'>
@@ -184,7 +211,7 @@ export default class MyEditor extends React.Component {
                   color={this.picker.currentColor(editorState)}
                 />
               </Button>
-              <Button icon style={{height: '45px', backgroundColor: '#cd6133'}}>
+              <Button onMouseDown={() => this.onSaveClick()} icon style={{height: '45px', backgroundColor: '#cd6133'}}>
                 <i className="material-icons" id='test'>save</i>
               </Button>
             </Button.Group>
@@ -194,6 +221,7 @@ export default class MyEditor extends React.Component {
             onKeyDown={(e) => {
               if (e.key === "Tab") {
                 e.preventDefault()
+                console.log('Tab pressed')
                 //TODO TAB INDENT FEATURE
               }
             }}>
