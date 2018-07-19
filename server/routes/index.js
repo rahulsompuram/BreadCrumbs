@@ -104,6 +104,7 @@ router.post('/saveDoc', (req, res) => {
   Document.findOne({_id: req.body.docId})
     .then(doc => {
       if (doc) {
+        doc.title = req.body.title;
         doc.content.push(req.body);
         doc.save()
           .then(() => res.send({message: "Saved!"}))
