@@ -127,7 +127,7 @@ h2 {
   background-color: #cd6133;
   width: 240px;
   height: 60px;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -191,12 +191,14 @@ h2 {
   display: flex;
   align-items: center;
   background-color: #cd6133;
+  margin: -10px;
 }
 
 #docPortalHeader {
   display: flex;
   justify-content: space-between;
   background-color: #cd6133;
+  margin: -10px;
 }
 
 #homeButton {
@@ -239,6 +241,16 @@ h2 {
   border-bottom: 1px solid black;
 }
 
+#shareableIDBox {
+  margin-left: -10px;
+  padding-left: 10px;
+}
+
+#updateTitleBox {
+  margin-left: -10px;
+  padding-left: 10px;
+}
+
 .docsListList {
   width: 80%;
   margin: auto;
@@ -258,12 +270,14 @@ h3 {
   color: #cd6133;
 }
 
-#credentials > * {
+#credentials > Button {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
 
-#register_inputs > * {
+#register_inputs > Button {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
 
 #editor_page {
