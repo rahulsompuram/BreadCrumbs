@@ -38,7 +38,7 @@ export default class DocumentsPortal extends React.Component {
 
   render() {
     return(
-      <div className='container'>
+      <div className='container' id='background_example'>
         <div className='container' id="docPortalHeader">
           <div className="topnav">
             <h2 id='docPortalTitle'>Documents Portal</h2>
@@ -63,7 +63,7 @@ export default class DocumentsPortal extends React.Component {
 
           <div className='docsList'>
             <div className='docsListHeader'>
-              <h3 id='docsListH3'>My Documents</h3>
+              <h4 id='docsListH3'>My Documents</h4>
             </div>
             <br />
             <div className='docsListList'>
