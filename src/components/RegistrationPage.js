@@ -56,7 +56,7 @@ export default class RegistrationPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id='background_example'>
         <div className='container' id="loginHeader">
           <div className="topnav2">
             <Button id="loginRedirectButton" animated='vertical' onClick={() => this.props.redirect('LoginPage')}>
@@ -67,17 +67,23 @@ export default class RegistrationPage extends React.Component {
            </Button>
           </div>
         </div>
-        <div id="registrationTitle">
-          Registration
-        </div>
-        <div id="register_inputs">
-          <Input focus type="text" value={this.state.fName} onChange={this.onChgNameF} placeholder='First Name' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
-          <Input focus type="text" value={this.state.lName} onChange={this.onChgNameL} placeholder='Last Name' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
-          <Input focus type="text" value={this.state.username} onChange={this.onChgUsername} placeholder='Username' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
-          <Input focus type="password" value={this.state.password} onChange={this.onChgPass} placeholder='Password' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
-          <Input focus type="password" value={this.state.passwordRepeat} onChange={this.onChgPassRpt} placeholder='Repeat Password' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
-          <Button onClick={this.onRegClick} primary>Register</Button>
-          <text style={{color: 'red'}}>{this.state.message}</text>
+        <div className='container' id='registration_container'>
+          <div id="registrationTitle">
+            Registration
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <div id="register_inputs">
+            <Input focus type="text" value={this.state.fName} onChange={this.onChgNameF} placeholder='First Name' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
+            <Input focus type="text" value={this.state.lName} onChange={this.onChgNameL} placeholder='Last Name' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
+            <Input focus type="text" value={this.state.username} onChange={this.onChgUsername} placeholder='Username' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
+            <Input focus type="password" value={this.state.password} onChange={this.onChgPass} placeholder='Password' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
+            <Input focus type="password" value={this.state.passwordRepeat} onChange={this.onChgPassRpt} placeholder='Repeat Password' onKeyDown={(e) => e.key === "Enter" ? this.onRegClick() : null}/> <br />
+            <Button onClick={this.onRegClick} primary>Register</Button>
+            <text style={{color: 'red'}}>{this.state.message}</text>
+          </div>
         </div>
     </div>
     );

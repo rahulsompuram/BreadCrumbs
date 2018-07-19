@@ -88,39 +88,34 @@ export default class MyEditor extends React.Component {
     const { editorState } = this.state;
 
     return (
-      <div className="container" id='editor_page'>
+      <div className="container" id='background_example'>
         <div className='container' id="documentHeader">
-          <div className="topnav" id='docTitleBox'>
-            <h2 id='docTitle'>{this.state.documentTitle}</h2>
+          <div id='top_of'>
+            <div className="topnav" id='docTitleBox'>
+              <Input id='docTitle' focus type="text" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)} onKeyDown={(e) => e.key === "Enter" ? console.log('enter pressed') : null}/>
+            </div>
+            <div id='docTitleButtons'>
+              <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
+               <Button.Content hidden>Home</Button.Content>
+               <Button.Content visible>
+                 <Icon name='home' />
+               </Button.Content>
+             </Button>
+             <Button id="homeButton" animated='vertical'>
+              <Button.Content hidden>Logout</Button.Content>
+              <Button.Content visible>
+                <Icon name='sign out alternate icon' />
+              </Button.Content>
+            </Button>
+            </div>
           </div>
-          <div id='docTitleButtons'>
-            <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
-             <Button.Content hidden>Home</Button.Content>
-             <Button.Content visible>
-               <Icon name='home' />
-             </Button.Content>
-           </Button>
-           <Button id="homeButton" animated='vertical'>
-            <Button.Content hidden>Logout</Button.Content>
-            <Button.Content visible>
-              <Icon name='sign out alternate icon' />
-            </Button.Content>
-          </Button>
+          <div id='bottom_of'>
+            <div className='container' id='shareableIDBox'>
+              <h3>
+                Shareable ID: {this.state.shareableID}
+              </h3>
+            </div>
           </div>
-        </div>
-        <div className='container' id='shareableIDBox'>
-          <h3>
-            Shareable ID: {this.state.shareableID}
-          </h3>
-        </div>
-        <div className='container' id='updateTitleBox'>
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <label id='update_label'>
-              Update title:
-              <input type="text" name="name" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)}/>
-            </label>
-            <input type="submit" value="Change!" />
-          </form>
         </div>
 
         <br />

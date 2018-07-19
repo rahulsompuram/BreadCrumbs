@@ -35,36 +35,56 @@ body {
   background: #2c3e50;
   height: 100%;
 }
+
+#login_container {
+  background-color: white;
+  border: 1px solid #cd6133;
+  border-radius: 10px;
+  height: 65%;
+  width: 40%;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 #loginTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
   color: #cd6133;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: 100px;
-  justify-content: center;
-  height: 300px;
 }
 
+#registration_container {
+  background-color: white;
+  border: 1px solid #cd6133;
+  border-radius: 10px;
+  height: 65%;
+  width: 40%;
+  margin-top: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 #registrationTitle {
   font-family: 'Concert One', sans-serif;
   font-size: 96px;
   color: #cd6133;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: 100px;
-  justify-content: center;
-  height: 300px;
 }
+
 #register_inputs {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 25%;
-  margin: auto;
+  width: 50%;
 }
 #registerButton {
   background-color: #cd6133;
@@ -104,8 +124,7 @@ h2 {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 25%;
-  margin: auto;
+  width: 50%;
 }
 
 .docsList {
@@ -169,7 +188,6 @@ h2 {
 }
 
 .topnav2 {
-  background-color: white;
   margin: 0;
   height: 50px;
   display: flex;
@@ -189,16 +207,33 @@ h2 {
 
 #documentHeader {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   background-color: #cd6133;
-  margin: -10px;
+  margin: 5px;
+  height: 75px;
+}
+
+#top_of {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#bottom_of {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 #docPortalHeader {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: #cd6133;
-  margin: -10px;
+  margin: 5px;
+  height: 50px;
 }
 
 #homeButton {
@@ -208,11 +243,21 @@ h2 {
 
 #loginRedirectButton {
   color: #cd6133;
-  background-color: white;
+  background-color: transparent;
 }
 
 #docTitle {
   padding-left: 10px;
+  background-color: #cd6133;
+  color: white;
+  font-size: 28px;
+  height: 30px;
+  padding-left: -5px;
+  border: 1px solid #cd6133;
+}
+
+#docTitle::placeholder {
+  color: white;
 }
 
 #docPortalTitle {
@@ -242,12 +287,10 @@ h2 {
 }
 
 #shareableIDBox {
-  margin-left: -10px;
-  padding-left: 10px;
+  padding-left: 14px;
 }
 
 #updateTitleBox {
-  margin-left: -10px;
   padding-left: 10px;
 }
 
@@ -267,7 +310,7 @@ h2 {
 }
 
 h3 {
-  color: #cd6133;
+  color: white;
 }
 
 #credentials > Button {
@@ -280,6 +323,19 @@ h3 {
   border-radius: 10px;
 }
 
-#editor_page {
-  overflow: 'scroll';
+#background_example {
+  margin: -10px;
+  height: 1000px;
+}
+
+#background_example::after {
+  content: "";
+  background-image: url('https://content.mycutegraphics.com/backgrounds/food/toast-background.gif') !important;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
