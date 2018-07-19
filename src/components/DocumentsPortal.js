@@ -63,7 +63,7 @@ export default class DocumentsPortal extends React.Component {
 
           <div className='docsList'>
             <div className='docsListHeader'>
-              <h3 id='docsListH3'>My Documents</h3>
+              <h4 id='docsListH3'>My Documents</h4>
             </div>
             <br />
             <div className='docsListList'>
