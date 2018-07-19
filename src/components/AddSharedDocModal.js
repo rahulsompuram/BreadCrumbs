@@ -40,14 +40,12 @@ class AddSharedDocModal extends React.Component  {
 
   render() {
         return (
-          <Modal open={this.state.open} trigger={
+          <Modal trigger={
             <Button id="shareableDoc" onClick={() => this.setState({open: true})} animated='fade' className="ui primary button">
-              <Button.Content visible>
-                Add Shared Document
-              </Button.Content>
-              <Button.Content hidden>
-                <Icon name='plus' />
-              </Button.Content>
+            <Button.Content visible>Add Shared Document</Button.Content>
+            <Button.Content hidden>
+              <Icon name='plus' />
+            </Button.Content>
             </Button>
           } basic size='small' closeIcon>
           <Header icon='file alternate icon' content='Add shareable document...'/>
