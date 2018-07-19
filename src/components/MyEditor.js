@@ -43,13 +43,22 @@ export default class MyEditor extends React.Component {
     this.state = {
       editorState: EditorState.createEmpty(),
       fontSize: 15,
-      documentTitle: 'Edit Document',
+      documentTitle: '',
       value: '',
-      shareableID: '12345'
+      shareableID: ''
     };
     this.onChange = editorState => this.setState({ editorState });
     this.getEditorState = () => this.state.editorState;
     this.picker = colorPickerPlugin(this.onChange, this.getEditorState);
+  }
+
+  componentDidMount() {
+    // fetch to get the contents of doc fetch('')
+
+    this.setState({
+      documentTitle: this.props.docTitle,
+      shareableID: this.props.docId
+    })
   }
 
   toggleInlineStyle(e, inlineStyle) {
@@ -82,6 +91,27 @@ export default class MyEditor extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({documentTitle: this.state.value});
+  }
+
+  onSaveClick() {
+    fetch('http://localhost:1337/saveDoc', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        docContent: this.state.value,
+        docId: this.state.shareableID
+      })
+    })
+    .then(res => res.json())
+    .then(responseJSON => {
+      if (responseJSON.message === "Saved!") {
+        alert("Saved!")
+      } else {
+        alert("There was an error saving the document.")
+      }
+    })
   }
 
   render() {
@@ -176,7 +206,7 @@ export default class MyEditor extends React.Component {
                   color={this.picker.currentColor(editorState)}
                 />
               </Button>
-              <Button icon style={{height: '45px', backgroundColor: '#cd6133'}}>
+              <Button onMouseDown={() => this.onSaveClick()} icon style={{height: '45px', backgroundColor: '#cd6133'}}>
                 <i className="material-icons" id='test'>save</i>
               </Button>
             </Button.Group>

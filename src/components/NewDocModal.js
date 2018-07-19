@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
-import Document from '../../model/document'
 
 export default class NewDocModal extends React.Component {
   constructor(){
@@ -20,40 +19,39 @@ export default class NewDocModal extends React.Component {
   onChangeCollab = (e) => {this.setState({ collaboratorStr: e.target.value })}
 
   onClickCreate = () => {
-    Document.findOne({ owner: this.props.currentUserId, title: this.state.title })
-    .then(doc => {
-      if(doc){
-        this.setState({ message: "This title is being used." });
-      } else {
-        if(this.state.password === this.state.passwordRepeat){
-          console.log('inside fetch')
-          fetch('http://localhost:1337/createDoc', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              title: this.state.title,
-              password: this.state.password,
-              collaboratorStr: this.state.collaboratorStr,
-              owner: this.props.currentUserId
-            })
-          })
-          .then(res => res.json())
-          .then(res => {console.log(res); return res.success ? this.props.redirect('MyEditor') : null})
-          .catch(err => res.send({ 'error': err }))
+    if(this.state.password === this.state.passwordRepeat){
+      fetch('http://localhost:1337/createDoc', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          title: this.state.title,
+          password: this.state.password,
+          collaboratorStr: this.state.collaboratorStr,
+          owner: this.props.currentUserId
+        })
+      })
+      .then(res => res.json())
+      .then(res => {
+        if (res.success) {
+          this.props.setDocInfo("", this.state.title)
+          this.props.redirect('MyEditor')
         } else {
-          this.setState({message: "Passwords do not match!"})
+          this.setState({ message: res.message })
         }
-      }
-    })
-    .catch(err => res.send({'error': err}))
+      })
+      .catch(err => console.log("New Doc Modal error", err))
+    } else {
+      this.setState({message: "Passwords do not match!"})
+    }
+
   }
 
   render() {
     return (
     <Modal trigger={
-      <Button id="newDoc" animated='fade' className="ui primary button">
+      <Button id="newDoc" onClick={() => this.setState({open: true})} animated='fade' className="ui primary button">
       <Button.Content visible>New Document</Button.Content>
       <Button.Content hidden>
         <Icon name='plus' />
