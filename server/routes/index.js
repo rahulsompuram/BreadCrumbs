@@ -85,22 +85,24 @@ router.post('/shareable', (req, res) => {
               if (user) {
                 if (!doc.collaboratorList.includes(user._id)) {
                   doc.collaboratorList.push(user._id);
-                  alert('Done 1');
+                  doc.save();
+                  console.log('Done 1');
                 }
                 if (!user.docList.includes(doc._id)) {
                   user.docList.push(doc._id);
-                  alert('Done 2');
+                  user.save();
+                  console.log('Done 2');
                 }
               } else {
-                alert('User was not found');
+                console.log('User was not found');
               }
             })
             .catch(err => res.send({ 'error': err }))
         } else {
-          alert('Incorrect shareable password');
+          console.log('Incorrect shareable password');
         }
       } else {
-        alert('Document was not found');
+        console.log('Document was not found');
       }
     })
     .catch(err => res.send({ 'error': err }))
