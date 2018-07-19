@@ -44,7 +44,6 @@ export default class MyEditor extends React.Component {
       editorState: EditorState.createEmpty(),
       fontSize: 15,
       documentTitle: '',
-      value: '',
       shareableID: ''
       //for later, know that you have this.props.currentUsername
     };
@@ -98,14 +97,7 @@ export default class MyEditor extends React.Component {
     }
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.setState({documentTitle: this.state.value});
-  }
+  handleTitleChange = (e) => { this.setState({documentTitle: e.target.value}) }
 
   onSaveClick() {
     fetch('http://localhost:1337/saveDoc', {
