@@ -100,7 +100,7 @@ export default class MyEditor extends React.Component {
                <Icon name='home' />
              </Button.Content>
            </Button>
-           <Button id="homeButton" animated='vertical'>
+           <Button onClick={() => this.props.redirect('LoginPage')} id="homeButton" animated='vertical'>
             <Button.Content hidden>Logout</Button.Content>
             <Button.Content visible>
               <Icon name='sign out alternate icon' />

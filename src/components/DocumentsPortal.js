@@ -35,7 +35,7 @@ export default class DocumentsPortal extends React.Component {
           <div className="topnav">
             <h2 id='docPortalTitle'>Documents Portal</h2>
           </div>
-          <Button id="homeButton" animated='vertical'>
+          <Button onClick={() => this.props.redirect('LoginPage')} id="homeButton" animated='vertical'>
             <Button.Content hidden>Logout</Button.Content>
             <Button.Content visible>
               <Icon name='sign out alternate icon' />
