@@ -86,11 +86,6 @@ router.post('/createDoc', (req, res) => {
           collaboratorList: [req.body.owner]
         });
         newDoc.save()
-        .then(doc => {
-          User.findOneAndUpdate({_id: req.body.owner}, { $addToSet: { docList: doc._id } })
-          .then(res => console.log(res))
-          .catch(err => console.log(err))
-        })
         .then(result => res.send({success: true, result: result}))
         .catch(err => res.send({success: false, errorSaving: err}))
       }
