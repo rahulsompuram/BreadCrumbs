@@ -63,19 +63,14 @@ router.post('/createDoc', (req, res) => {
         let newDoc = new Document({
           title: req.body.title,
           password: req.body.password,
-          // collaboratorList: Promise.all(req.body.collaboratorStr.split(",").map(user => {
-          //   return User.findOne({username: user.trim()})
-          //   .then(user => user ? user._id : null)
-          //   .catch(err => res.send({ "error": err }))
-          // }))
-          // .then(result => result.concat(req.body.owner)),
           owner: req.body.owner,
           createdTime: Date(),
           lastEditTime: Date(),
           collaboratorList: [req.body.owner]
         });
+
         newDoc.save()
-        .then(result => res.send({success: true, result: result}))
+        .then(result => res.send({success: true, result: result, docId: newDoc._id}))
         .catch(err => res.send({success: false, errorSaving: err}))
       }
     })
@@ -105,16 +100,29 @@ router.post('/shareable', (req, res) => {
 })
 
 router.post('/saveDoc', (req, res) => {
+  //Push a state onto the contents arr
   Document.findOne({_id: req.body.docId})
     .then(doc => {
       if (doc) {
-        var contentArr = req.body.docContent.split(" ");
-        doc.content = contentArr;
+        doc.content.push(req.body);
         doc.save()
           .then(() => res.send({message: "Saved!"}))
           .catch((err) => res.send({ 'saving to DB error': err}))
       } else {
         console.log('Document was not found');
+      }
+    })
+    .catch((err) => res.send({ 'save doc server error': err}))
+})
+
+router.get('/loadDoc', (req, res) => {
+  //Get the most recent state from the content Array
+  Document.findOne({_id: req.query.docId})
+    .then(doc => {
+      if (doc && doc.content.length !== 0) {
+        res.send({message: "Success", docEditorState: doc.content[doc.content.length - 1]})
+      } else {
+        res.send({message: "No document"})
       }
     })
     .catch((err) => res.send({ 'save doc server error': err}))

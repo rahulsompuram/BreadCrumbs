@@ -27,7 +27,7 @@ export default class DocumentsPortal extends React.Component {
       .then(responseJSON => {
         return this.setState({userDocs: responseJSON})
       })
-      .catch(err => res.send({ 'error': err }))
+      .catch(err => console.log("DocumentsPortal error", err))
   }
 
   addShareable(doc) {

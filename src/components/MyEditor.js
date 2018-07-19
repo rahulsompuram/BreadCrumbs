@@ -1,5 +1,5 @@
 import React, { Component, Scrollable } from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
 import { Button, Icon, Input } from 'semantic-ui-react';
 import io from 'socket.io-client';
@@ -46,6 +46,7 @@ export default class MyEditor extends React.Component {
       documentTitle: '',
       value: '',
       shareableID: ''
+      //for later, know that you have this.props.currentUsername
     };
     this.onChange = editorState => this.setState({ editorState });
     this.getEditorState = () => this.state.editorState;
@@ -54,6 +55,7 @@ export default class MyEditor extends React.Component {
   }
 
   componentDidMount() {
+<<<<<<< HEAD
     // fetch to get the contents of doc fetch('')
     this.socket = io('http://localhost:1337');
     this.socket.on('connect', () => {
@@ -64,7 +66,27 @@ export default class MyEditor extends React.Component {
     this.setState({
       documentTitle: this.props.docTitle,
       shareableID: this.props.docId
+=======
+    fetch('http://localhost:1337/loadDoc?docId=' + this.props.docId)
+    .then(res => res.json())
+    .then(responseJSON => {
+      if (responseJSON.message === "Success") {
+        this.setState({
+          documentTitle: this.props.docTitle,
+          shareableID: this.props.docId,
+          editorState: EditorState.createWithContent(convertFromRaw(responseJSON.docEditorState.editorState))
+        })
+      } else {
+        this.setState({
+          documentTitle: this.props.docTitle,
+          shareableID: this.props.docId,
+          editorState: EditorState.createEmpty()
+        })
+      }
+>>>>>>> 15c816e81dbc52973f1110d21fea6267783ff0fd
     })
+    .catch(err => console.log("MyEditor loding doc error: ", err))
+
   }
 
 
@@ -120,7 +142,10 @@ export default class MyEditor extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        docContent: this.state.value,
+        userId: this.props.currentUserId,
+        editorState: convertToRaw(this.state.editorState.getCurrentContent()),
+        saveTime: Date(),
+        title: this.state.documentTitle,
         docId: this.state.shareableID
       })
     })
@@ -132,6 +157,7 @@ export default class MyEditor extends React.Component {
         alert("There was an error saving the document.")
       }
     })
+    .catch(err => console.log("MyEditor saving error: ", err))
   }
 
   render() {

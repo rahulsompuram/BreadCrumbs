@@ -35,7 +35,7 @@ export default class NewDocModal extends React.Component {
       .then(res => res.json())
       .then(res => {
         if (res.success) {
-          this.props.setDocInfo("", this.state.title)
+          this.props.setDocInfo(res.docId, this.state.title)
           this.props.redirect('MyEditor')
         } else {
           this.setState({ message: res.message })

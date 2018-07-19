@@ -22,7 +22,7 @@ export default class LoginPage extends React.Component {
   clickLogin = () => {
     this.socket.emit('login', {username: this.state.username, password: this.state.password}, (res) => {
       if (res) {
-        this.props.setUserId(res._id);
+        this.props.setUserId(res._id, this.state.username);
         this.props.redirect('DocumentsPortal');
       } else {
         this.setState({message: "Invalid username and password pair!"})
