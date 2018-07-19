@@ -44,7 +44,6 @@ export default class MyEditor extends React.Component {
       editorState: EditorState.createEmpty(),
       fontSize: 15,
       documentTitle: '',
-      value: '',
       shareableID: ''
       //for later, know that you have this.props.currentUsername
     };
@@ -98,14 +97,7 @@ export default class MyEditor extends React.Component {
     }
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.setState({documentTitle: this.state.value});
-  }
+  handleTitleChange = (e) => { this.setState({documentTitle: e.target.value}) }
 
   onSaveClick() {
     fetch('http://localhost:1337/saveDoc', {
@@ -140,7 +132,7 @@ export default class MyEditor extends React.Component {
         <div className='container' id="documentHeader">
           <div id='top_of'>
             <div className="topnav" id='docTitleBox'>
-              <Input id='docTitle' focus type="text" placeholder={this.state.documentTitle} onChange={this.handleChange.bind(this)} onKeyDown={(e) => e.key === "Enter" ? console.log('enter pressed') : null}/>
+              <Input id='docTitle' focus type="text" placeholder={this.state.documentTitle} onChange={this.handleTitleChange} />
             </div>
             <div id='docTitleButtons'>
               <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
