@@ -97,7 +97,7 @@ export default class MyEditor extends React.Component {
         })
       })
     });
-    setInterval(this.onSaveClick.bind(this), 10000)
+    setInterval(this.onSaveClick.bind(this), 30000)
   }
 
   componentWillUnmount() {
