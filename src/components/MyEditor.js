@@ -47,7 +47,7 @@ export default class MyEditor extends React.Component {
       documentTitle: '',
       shareableID: '',
       lastSaveTime: Date(),
-      //for later, know that you have this.props.currentUsername
+      historyState: EditorState.createEmpty(),
     };
     this.onChange = editorState => {
       this.setState({ editorState }, () => {
@@ -57,6 +57,12 @@ export default class MyEditor extends React.Component {
         })
       });
     };
+    this.onHistoryClick = historyState => {
+      this.setState({ historyState: EditorState.createWithContent(convertFromRaw(historyState)) });
+    }
+    this.restoreState = () => {
+      this.setState({editorState: this.state.historyState});
+    }
     this.getEditorState = () => this.state.editorState;
     this.picker = colorPickerPlugin(this.onChange, this.getEditorState);
     this.socket = "";
@@ -100,8 +106,10 @@ export default class MyEditor extends React.Component {
         })
       })
     });
-    this.myTime = setInterval(this.onSaveClick.bind(this), 5000)
+    this.myTime = setInterval(this.onSaveClick.bind(this), 30000)
   }
+
+
 
   componentWillUnmount() {
     // this.socket.off()
@@ -198,7 +206,6 @@ export default class MyEditor extends React.Component {
             </div>
           </div>
         </div>
-
         <br />
         <div className='container' id='container2'>
           <div className="toolbar">
@@ -260,7 +267,7 @@ export default class MyEditor extends React.Component {
               <Button onMouseDown={() => this.onSaveClick()} icon style={{height: '45px', backgroundColor: '#cd6133'}}>
                 <i className="material-icons" id='test'>save</i>
               </Button>
-              <RevisionHistoryModal />
+              <RevisionHistoryModal restore={this.restoreState} docId={this.props.docId} editorState={this.state.historyState} onClick={this.onHistoryClick} docTitle={this.state.documentTitle} lastSaveTime={this.state.lastSaveTime}/>
             </Button.Group>
           </div>
           <br />

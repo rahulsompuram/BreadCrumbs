@@ -67,14 +67,12 @@ export default class DocumentsPortal extends React.Component {
             </div>
             <br />
             <div className='docsListList'>
-              <ul>
                 {this.state.userDocs.map((doc) => {
-                  return <li><a href="#" onClick={() => {
+                  return <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%', margin: 'auto', borderBottom: '1px solid #cd6133', height: '50px', fontSize: '17px'}}><a href="#" onClick={() => {
                     this.props.setDocInfo(doc._id, doc.title)
                     this.props.redirect('MyEditor')
-                  }}>{doc.title}</a></li>
+                  }}>{doc.title}</a></div>
                 })}
-              </ul>
             </div>
           </div>
         </div>

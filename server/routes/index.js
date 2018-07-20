@@ -129,4 +129,16 @@ router.get('/loadDoc', (req, res) => {
     .catch((err) => res.send({ 'save doc server error': err}))
 })
 
+router.get('/revisionHistory', (req, res) => {
+  Document.findOne({_id: req.query.docId})
+    .then(doc => {
+      if (doc.content.length > 10) {
+        var historyArr = doc.content.slice(doc.content.length - 10);
+        res.json({"history": historyArr});
+      } else {
+        res.json({"history": doc.content});
+      }
+    })
+})
+
 export default router
