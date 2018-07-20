@@ -1,7 +1,7 @@
 import React, { Component, Scrollable } from 'react';
 import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
-import { Button, Icon, Input } from 'semantic-ui-react';
+import { Button, Icon, Input } from 'semantic-ui-react'
 import io from 'socket.io-client';
 import RevisionHistoryModal from './RevisionHistoryModal.js'
 
@@ -45,21 +45,23 @@ export default class MyEditor extends React.Component {
       editorState: EditorState.createEmpty(),
       fontSize: 15,
       documentTitle: '',
-      shareableID: ''
+      shareableID: '',
       //for later, know that you have this.props.currentUsername
     };
     this.onChange = editorState => {
       this.setState({ editorState }, () => {
-        this.socket.emit('editDocument', [this.props.docId, convertToRaw(this.state.editorState.getCurrentContent())])
+        this.socket.emit('editDocument', {
+          docId: this.props.docId,
+          editorState: convertToRaw(this.state.editorState.getCurrentContent())
+        })
       });
     };
     this.getEditorState = () => this.state.editorState;
     this.picker = colorPickerPlugin(this.onChange, this.getEditorState);
     this.socket = "";
-    }
+  }
 
   componentDidMount() {
-    // fetch to get the contents of doc fetch('')
     this.socket = io('http://localhost:1337');
     this.socket.on('connect', () => {
       console.log('Connected to server');
@@ -69,6 +71,7 @@ export default class MyEditor extends React.Component {
         fetch('http://localhost:1337/loadDoc?docId=' + this.props.docId)
         .then(res => res.json())
         .then(responseJSON => {
+          console.log('responsoneJSON: ', responseJSON)
           if (responseJSON.message === "Success") {
             this.setState({
               documentTitle: this.props.docTitle,
@@ -83,7 +86,7 @@ export default class MyEditor extends React.Component {
             })
           }
         })
-        .catch(err => console.log("MyEditor loding doc error: ", err))
+        .catch(err => console.log("MyEditor loading doc error: ", err))
       })
       this.socket.on('liveContent', (editorState) => {
         console.log('MOUNTING LIVE CONTENT')
@@ -91,15 +94,20 @@ export default class MyEditor extends React.Component {
         this.setState({
           editorState: EditorState.createWithContent(convertFromRaw(editorState)),
           documentTitle: this.props.docTitle,
-          shareableID: this.props.docId
+          shareableID: this.props.docId,
         })
       })
     });
+    setInterval(this.onSaveClick.bind(this), 10000)
   }
 
   componentWillUnmount() {
     // this.socket.off()
-    this.socket.emit('closeDocument', this.props.docId)
+    this.socket.emit('closeDocument', {
+      docId: this.props.docId,
+      userId: this.props.currentUserId,
+    })
+    //clearInterval()
   }
 
   toggleInlineStyle(e, inlineStyle) {
@@ -179,7 +187,7 @@ export default class MyEditor extends React.Component {
                  <Icon name='home' />
                </Button.Content>
              </Button>
-             <Button onClick={() => this.props.redirect('LoginPage')} id="homeButton" animated='vertical'>
+             <Button id="homeButton" animated='vertical'>
               <Button.Content hidden>Logout</Button.Content>
               <Button.Content visible>
                 <Icon name='sign out alternate icon' />
@@ -187,6 +195,7 @@ export default class MyEditor extends React.Component {
             </Button>
             </div>
           </div>
+
         </div>
 
         <br />
