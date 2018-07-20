@@ -55,7 +55,7 @@ export default class MyEditor extends React.Component {
     this.getEditorState = () => this.state.editorState;
     this.picker = colorPickerPlugin(this.onChange, this.getEditorState);
     this.socket = "";
-    }
+  }
 
   componentDidMount() {
     // fetch to get the contents of doc fetch('')
