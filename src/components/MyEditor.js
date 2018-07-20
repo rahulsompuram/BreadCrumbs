@@ -58,8 +58,7 @@ export default class MyEditor extends React.Component {
     this.socket = io('http://localhost:1337');
     this.socket.on('connect', () => {
       console.log('Connected to server');
-      this.socket.emit('joinDocument', [this.props.docId,
-        convertToRaw(this.state.editorState.getCurrentContent())]);
+      this.socket.emit('joinDocument', this.props.docId);
       this.socket.on('fetch', () => {
         fetch('http://localhost:1337/loadDoc?docId=' + this.props.docId)
         .then(res => res.json())
@@ -129,6 +128,7 @@ export default class MyEditor extends React.Component {
     })
     .then(res => res.json())
     .then(responseJSON => {
+      console.log(responseJSON);
       if (responseJSON.message === "Saved!") {
         alert("Saved!")
       } else {
