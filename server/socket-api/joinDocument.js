@@ -1,3 +1,4 @@
+import Document from '../../model/document';
 
 const rooms = {};
 
@@ -6,7 +7,7 @@ export default function joinDocument(io, socket) {
     io.in(docId).clients((err, clientArr) => {
       console.log('CLIENT ARRAY', clientArr)
       if (err) {
-        console.log('error', err);
+        console.log('error in openDocument socket', err);
       } else {
         if (clientArr.length < 6){
         socket.join(docId);
@@ -19,15 +20,28 @@ export default function joinDocument(io, socket) {
     });
   })
 
-  socket.on('editDocument', function(docInfoArr){
-    rooms[docInfoArr[0]] = docInfoArr[1];
-    console.log('DOCID', docInfoArr[0])
-    console.log('IN EDITDOCUMENT!!!!',rooms[docInfoArr[0]].blocks[0].text)
-    socket.to(docInfoArr[0]).emit('liveContent', rooms[docInfoArr[0]]);
+  socket.on('editDocument', function(doc){
+    rooms[doc.docId] = doc.editorState;
+    console.log('IN EDITDOCUMENT!!!!',rooms[doc.docId].blocks[0].text)
+    socket.to(doc.docId).emit('liveContent', rooms[doc.docId]);
   })
 
-  socket.on('closeDocument', (docId) => {
-    //need to finish this part!
-    socket.leave(docId)
+  socket.on('closeDocument', (doc) => {
+    socket.leave(doc.docId)
+    console.log('left document')
+    io.in(doc.docId).clients((err, clientArr) => {
+      if (err) {
+        console.log('error in closeDocument clients socket: ', err);
+      } else {
+        if(clientArr.length === 0 && rooms[doc.docId]){
+          let content = Object.assign({ editorState: rooms[doc.docId], saveTime: Date() }, doc)
+          Document.findOneAndUpdate({_id: doc.docId}, { $push: { content }})
+          .then(err => {
+            console.log('response of findOneAndUpdate: ', err)
+            delete rooms[doc.docId];
+          })
+        }
+      }
+    })
   })
 }

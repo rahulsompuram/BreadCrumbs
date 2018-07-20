@@ -49,7 +49,10 @@ export default class MyEditor extends React.Component {
     };
     this.onChange = editorState => {
       this.setState({ editorState }, () => {
-        this.socket.emit('editDocument', [this.props.docId, convertToRaw(this.state.editorState.getCurrentContent())])
+        this.socket.emit('editDocument', {
+          docId: this.props.docId,
+          editorState: convertToRaw(this.state.editorState.getCurrentContent())
+        })
       });
     };
     this.getEditorState = () => this.state.editorState;
@@ -67,6 +70,7 @@ export default class MyEditor extends React.Component {
         fetch('http://localhost:1337/loadDoc?docId=' + this.props.docId)
         .then(res => res.json())
         .then(responseJSON => {
+          console.log('responsoneJSON: ', responseJSON)
           if (responseJSON.message === "Success") {
             this.setState({
               documentTitle: this.props.docTitle,
@@ -81,7 +85,7 @@ export default class MyEditor extends React.Component {
             })
           }
         })
-        .catch(err => console.log("MyEditor loding doc error: ", err))
+        .catch(err => console.log("MyEditor loading doc error: ", err))
       })
       this.socket.on('liveContent', (editorState) => {
         console.log('MOUNTING LIVE CONTENT')
@@ -98,7 +102,10 @@ export default class MyEditor extends React.Component {
 
   componentWillUnmount() {
     // this.socket.off()
-    this.socket.emit('closeDocument', this.props.docId)
+    this.socket.emit('closeDocument', {
+      docId: this.props.docId,
+      userId: this.props.currentUserId,
+    })
   }
 
   toggleInlineStyle(e, inlineStyle) {
