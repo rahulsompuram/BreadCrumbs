@@ -107,7 +107,7 @@ router.post('/saveDoc', (req, res) => {
         doc.title = req.body.title;
         doc.content.push(req.body);
         doc.save()
-          .then(() => res.send({message: "Saved!"}))
+          .then(() => res.send({message: "Saved!", lastSaveTime: Date()}))
           .catch((err) => res.send({ 'saving to DB error': err}))
       } else {
         console.log('Document was not found');
@@ -121,7 +121,7 @@ router.get('/loadDoc', (req, res) => {
   Document.findOne({_id: req.query.docId})
     .then(doc => {
       if (doc && doc.content.length !== 0) {
-        res.send({message: "Success", docEditorState: doc.content[doc.content.length - 1]})
+        res.send({message: "Success", docEditorState: doc.content[doc.content.length - 1], lastSaveTime: doc.lastEditTime})
       } else {
         res.send({message: "No document"})
       }

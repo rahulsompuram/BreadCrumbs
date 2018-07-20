@@ -311,11 +311,7 @@ h2 {
 #shareable_id_id {
   width: 60%;
   height: 30px;
-  opacity: 0;
-}
-
-#shareable_id_id:hover {
-  opacity: 100 !important;
+  opacity: 100;
 }
 
 @media only screen and (max-width: 800px) {
@@ -501,4 +497,13 @@ h4 {
   font-size: 18px;
   color: #cd6133;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#saved_box {
+  display: flex;
+  justify-content: flex-end;
+  color: #cd6133;
+  align-items: center;
+  width: 80%;
+  margin: auto;
 }

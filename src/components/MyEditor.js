@@ -46,6 +46,7 @@ export default class MyEditor extends React.Component {
       fontSize: 15,
       documentTitle: '',
       shareableID: '',
+      lastSaveTime: Date(),
       //for later, know that you have this.props.currentUsername
     };
     this.onChange = editorState => {
@@ -76,7 +77,8 @@ export default class MyEditor extends React.Component {
             this.setState({
               documentTitle: this.props.docTitle,
               shareableID: this.props.docId,
-              editorState: EditorState.createWithContent(convertFromRaw(responseJSON.docEditorState.editorState))
+              editorState: EditorState.createWithContent(convertFromRaw(responseJSON.docEditorState.editorState)),
+              lastSaveTime: responseJSON.lastSaveTime,
             })
           } else {
             this.setState({
@@ -98,7 +100,7 @@ export default class MyEditor extends React.Component {
         })
       })
     });
-    setInterval(this.onSaveClick.bind(this), 30000)
+    this.myTime = setInterval(this.onSaveClick.bind(this), 5000)
   }
 
   componentWillUnmount() {
@@ -107,7 +109,7 @@ export default class MyEditor extends React.Component {
       docId: this.props.docId,
       userId: this.props.currentUserId,
     })
-    //clearInterval()
+    clearInterval(this.myTime)
   }
 
   toggleInlineStyle(e, inlineStyle) {
@@ -151,9 +153,8 @@ export default class MyEditor extends React.Component {
     })
     .then(res => res.json())
     .then(responseJSON => {
-      console.log(responseJSON);
       if (responseJSON.message === "Saved!") {
-        alert("Saved!")
+        this.setState({lastSaveTime: responseJSON.lastSaveTime});
       } else {
         alert("There was an error saving the document.")
       }
@@ -189,14 +190,13 @@ export default class MyEditor extends React.Component {
                </Button.Content>
              </Button>
              <Button id="homeButton" animated='vertical'>
-              <Button.Content hidden>Logout</Button.Content>
+              <Button.Content onClick={() => this.props.redirect('LoginPage')} hidden>Logout</Button.Content>
               <Button.Content visible>
                 <Icon name='sign out alternate icon' />
               </Button.Content>
             </Button>
             </div>
           </div>
-
         </div>
 
         <br />
@@ -262,6 +262,10 @@ export default class MyEditor extends React.Component {
               </Button>
               <RevisionHistoryModal />
             </Button.Group>
+          </div>
+          <br />
+          <div id='saved_box'>
+            Last saved at {this.state.lastSaveTime.toString().slice(0, Date().toString().indexOf('GMT'))}
           </div>
           <br />
           <div className="editor" style={{backgroundColor: 'white', width: '80%', margin: 'auto', paddingBottom: '10px', overflow: 'scroll'}}
