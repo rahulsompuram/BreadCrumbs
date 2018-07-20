@@ -47,20 +47,24 @@ export default class MyEditor extends React.Component {
       shareableID: ''
       //for later, know that you have this.props.currentUsername
     };
-    this.onChange = editorState => this.setState({ editorState });
+    this.onChange = editorState => {
+      this.setState({ editorState }, () => {
+        this.socket.emit('editDocument', [this.props.docId, convertToRaw(this.state.editorState.getCurrentContent())])
+      });
+    };
     this.getEditorState = () => this.state.editorState;
     this.picker = colorPickerPlugin(this.onChange, this.getEditorState);
     this.socket = "";
-  }
+    }
 
   componentDidMount() {
     // fetch to get the contents of doc fetch('')
     this.socket = io('http://localhost:1337');
     this.socket.on('connect', () => {
       console.log('Connected to server');
-      this.socket.emit('joinDocument', [this.props.docId,
-        convertToRaw(this.state.editorState.getCurrentContent())]);
+      this.socket.emit('openDocument', this.props.docId);
       this.socket.on('fetch', () => {
+        console.log('MOUNTING FETCH');
         fetch('http://localhost:1337/loadDoc?docId=' + this.props.docId)
         .then(res => res.json())
         .then(responseJSON => {
@@ -81,11 +85,20 @@ export default class MyEditor extends React.Component {
         .catch(err => console.log("MyEditor loding doc error: ", err))
       })
       this.socket.on('liveContent', (editorState) => {
+        console.log('MOUNTING LIVE CONTENT')
+        console.log('IN LIVECONTENT IN CLIENT', editorState.blocks[0].text)
         this.setState({
-          editorState: EditorState.createWithContent(convertFromRaw(editorState))
+          editorState: EditorState.createWithContent(convertFromRaw(editorState)),
+          documentTitle: this.props.docTitle,
+          shareableID: this.props.docId
         })
       })
     });
+  }
+
+  componentWillUnmount() {
+    // this.socket.off()
+    this.socket.emit('closeDocument', this.props.docId)
   }
 
   toggleInlineStyle(e, inlineStyle) {
