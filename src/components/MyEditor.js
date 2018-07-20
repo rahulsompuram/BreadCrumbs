@@ -3,6 +3,7 @@ import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'dr
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
 import { Button, Icon, Input } from 'semantic-ui-react'
 import io from 'socket.io-client';
+import RevisionHistoryModal from './RevisionHistoryModal.js'
 
 const styleMap = {
   'UPPERCASE': {
@@ -259,6 +260,7 @@ export default class MyEditor extends React.Component {
               <Button onMouseDown={() => this.onSaveClick()} icon style={{height: '45px', backgroundColor: '#cd6133'}}>
                 <i className="material-icons" id='test'>save</i>
               </Button>
+              <RevisionHistoryModal />
             </Button.Group>
           </div>
           <br />

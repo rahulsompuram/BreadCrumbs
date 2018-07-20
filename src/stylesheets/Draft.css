@@ -380,3 +380,125 @@ h4 {
   position: absolute;
   z-index: -1;
 }
+
+#revision_history_modal {
+  width: 95%!important;
+  left: 2.5%!important;
+  margin: 1em auto;
+  height: 100% !important;
+}
+
+#revision_modal_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#revision_modal_document_column {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding-right: 50px;
+  border-right: 1px solid white;
+}
+
+#revision_title {
+  display: flex;
+  justify-content: center;
+}
+
+#revision_document {
+  border: 3px solid #cd6133;
+  background-color: white;
+  height: 500px;
+  color: black;
+  border-radius: 2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#revision_modal_history_column {
+  width: 30%;
+  padding-left: 50px;
+}
+
+#revision_history_title {
+  display: flex;
+  justify-content: center;
+}
+
+#revision_modal_history_container {
+  border: 3px solid #cd6133;
+  background-color: white;
+  border-radius: 2px;
+}
+
+#revision_modal_history_list {
+  color: black;
+}
+
+#revision_changes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 3px solid #cd6133;
+  border-radius: 2px;
+  background-color: white;
+  color: black;
+  height: 250px;
+}
+
+#revision_additions {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #cd6133;
+  width: 50%
+}
+
+#revision_removals {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+#additions_title {
+  color: black;
+  font-size: 14px;
+  text-decoration: underline;
+  display: flex;
+  justify-content: center;
+}
+
+#removals_title {
+  color: black;
+  font-size: 14px;
+  text-decoration: underline;
+  display: flex;
+  justify-content: center;
+}
+
+#additions_body {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#removals_body {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#restore_history {
+  width: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#restore_button {
+  background-color: white;
+  border: 3px solid #cd6133;
+  width: 240px;
+  height: 60px;
+  font-size: 18px;
+  color: #cd6133;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
