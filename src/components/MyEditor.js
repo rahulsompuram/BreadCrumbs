@@ -132,7 +132,17 @@ export default class MyEditor extends React.Component {
         <div className='container' id="documentHeader">
           <div id='top_of'>
             <div className="topnav" id='docTitleBox'>
-              <Input id='docTitle' focus type="text" placeholder={this.state.documentTitle} onChange={this.handleTitleChange} />
+              <Input id='docTitle' focus type="text" placeholder={this.state.documentTitle} onChange={this.handleTitleChange}/>
+              <div className='container' id='shareableIDBox'>
+                <div id='shareable_id_text'>
+                  <h3>Shareable ID: </h3>
+                </div>
+                <div id='shareable_id_id'>
+                  <h3>
+                    {this.state.shareableID}
+                  </h3>
+                </div>
+              </div>
             </div>
             <div id='docTitleButtons'>
               <Button id="homeButton" animated='vertical' onClick={() => this.props.redirect('DocumentsPortal')}>
