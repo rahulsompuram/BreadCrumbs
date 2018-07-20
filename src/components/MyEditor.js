@@ -44,7 +44,7 @@ export default class MyEditor extends React.Component {
       editorState: EditorState.createEmpty(),
       fontSize: 15,
       documentTitle: '',
-      shareableID: ''
+      shareableID: '',
       //for later, know that you have this.props.currentUsername
     };
     this.onChange = editorState => {
@@ -93,11 +93,11 @@ export default class MyEditor extends React.Component {
         this.setState({
           editorState: EditorState.createWithContent(convertFromRaw(editorState)),
           documentTitle: this.props.docTitle,
-          shareableID: this.props.docId
+          shareableID: this.props.docId,
         })
       })
     });
-    setInterval(this.onSaveClick.bind(this), 30000)
+    setInterval(this.onSaveClick.bind(this), 10000)
   }
 
   componentWillUnmount() {
@@ -106,6 +106,7 @@ export default class MyEditor extends React.Component {
       docId: this.props.docId,
       userId: this.props.currentUserId,
     })
+    //clearInterval()
   }
 
   toggleInlineStyle(e, inlineStyle) {
