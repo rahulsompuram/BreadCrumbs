@@ -2,7 +2,7 @@ import React, { Component, Scrollable } from 'react';
 import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import ColorPicker, { colorPickerPlugin } from 'draft-js-color-picker';
 import { Button, Icon, Input } from 'semantic-ui-react'
-
+import io from 'socket.io-client';
 
 const styleMap = {
   'UPPERCASE': {
@@ -47,31 +47,58 @@ export default class MyEditor extends React.Component {
       shareableID: ''
       //for later, know that you have this.props.currentUsername
     };
-    this.onChange = editorState => this.setState({ editorState });
+    this.onChange = editorState => {
+      this.setState({ editorState }, () => {
+        this.socket.emit('editDocument', [this.props.docId, convertToRaw(this.state.editorState.getCurrentContent())])
+      });
+    };
     this.getEditorState = () => this.state.editorState;
     this.picker = colorPickerPlugin(this.onChange, this.getEditorState);
+    this.socket = "";
   }
 
   componentDidMount() {
-    fetch('http://localhost:1337/loadDoc?docId=' + this.props.docId)
-    .then(res => res.json())
-    .then(responseJSON => {
-      if (responseJSON.message === "Success") {
-        this.setState({
-          documentTitle: this.props.docTitle,
-          shareableID: this.props.docId,
-          editorState: EditorState.createWithContent(convertFromRaw(responseJSON.docEditorState.editorState))
+    this.socket = io('http://localhost:1337');
+    this.socket.on('connect', () => {
+      console.log('Connected to server');
+      this.socket.emit('openDocument', this.props.docId);
+      this.socket.on('fetch', () => {
+        console.log('MOUNTING FETCH');
+        fetch('http://localhost:1337/loadDoc?docId=' + this.props.docId)
+        .then(res => res.json())
+        .then(responseJSON => {
+          if (responseJSON.message === "Success") {
+            this.setState({
+              documentTitle: this.props.docTitle,
+              shareableID: this.props.docId,
+              editorState: EditorState.createWithContent(convertFromRaw(responseJSON.docEditorState.editorState))
+            })
+          } else {
+            this.setState({
+              documentTitle: this.props.docTitle,
+              shareableID: this.props.docId,
+              editorState: EditorState.createEmpty()
+            })
+          }
         })
-      } else {
+        .catch(err => console.log("MyEditor loding doc error: ", err))
+      })
+      this.socket.on('liveContent', (editorState) => {
+        console.log('MOUNTING LIVE CONTENT')
+        console.log('IN LIVECONTENT IN CLIENT', editorState.blocks[0].text)
         this.setState({
+          editorState: EditorState.createWithContent(convertFromRaw(editorState)),
           documentTitle: this.props.docTitle,
-          shareableID: this.props.docId,
-          editorState: EditorState.createEmpty()
+          shareableID: this.props.docId
         })
-      }
-    })
-    .catch(err => console.log("MyEditor loding doc error: ", err))
+      })
+    });
+    setInterval(this.onSaveClick.bind(this), 30000)
+  }
 
+  componentWillUnmount() {
+    // this.socket.off()
+    this.socket.emit('closeDocument', this.props.docId)
   }
 
   toggleInlineStyle(e, inlineStyle) {
@@ -159,13 +186,7 @@ export default class MyEditor extends React.Component {
             </Button>
             </div>
           </div>
-          <div id='bottom_of'>
-            <div className='container' id='shareableIDBox'>
-              <h3>
-                Shareable ID: {this.state.shareableID}
-              </h3>
-            </div>
-          </div>
+
         </div>
 
         <br />

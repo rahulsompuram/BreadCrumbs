@@ -20,7 +20,3 @@ app.use(routes)
 
 server.listen(process.env.PORT || 1337)
 console.log('Listening on PORT 1337')
-
-// componentwillunmount: close
-// in.client (err, clinetArray)
-// join(docId)
